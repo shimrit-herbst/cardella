@@ -1,7 +1,7 @@
 @import '../../styles/styles.scss';
 
 .home {
-    color: $clr1;
+    color: $darkGrey;
     overflow-y: auto;
     overflow-x: hidden;
 
@@ -35,7 +35,7 @@
                 justify-content: center;
                 width: rem(400px);
                 height: rem(100px);
-                background-color: $clr2;
+                background-color: $white;
                 position: relative;
                 border-radius: rem(32px);
                 text-align: center;
