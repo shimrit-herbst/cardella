@@ -1,0 +1,100 @@
+@import '../../styles/styles.scss';
+
+.home {
+    color: $darkGrey;
+    overflow-y: auto;
+    overflow-x: hidden;
+
+    .hero-container {
+        justify-content: center;
+        max-width: rem(1052px);
+        margin: 44px auto 10px;
+
+        .hero-img {
+            width: 920px;
+            margin-top: 0;
+        }
+
+        .hero-title {
+            flex-direction: column;
+            text-align: center;
+            align-self: center;
+
+            .logo {
+                width: 300px;
+                margin-bottom: 0;
+                margin: 0 auto;
+            }
+
+            h1 {
+                line-height: 30px;
+            }
+
+            .link {
+                flex-grow: 1;
+                justify-content: center;
+                width: rem(400px);
+                height: rem(100px);
+                background-color: $white;
+                position: relative;
+                border-radius: rem(32px);
+                text-align: center;
+                align-items: center;
+                cursor: pointer;
+                transition: all 0.1s ease-in-out;
+                margin: 0 auto;
+                font-size: rem(50px);
+
+                &:hover {
+                    opacity: 0.6;
+                    box-shadow: -6px -6px 10px rgba(255, 255, 255, 0.8),
+                        6px 6px 10px rgba(0, 0, 0, 0.2);
+                }
+
+                &:active {
+                    opacity: 1;
+                    box-shadow: inset -4px -4px 8px rgba(255, 255, 255, 0.5),
+                        inset 8px 8px 16px rgba(0, 0, 0, 0.1);
+                }
+            }
+        }
+    }
+}
+
+.main-container {
+    max-width: rem(1000px);
+    padding-top: 50px;
+    flex-direction: column;
+    margin: auto;
+
+    .couple:nth-child(2) {
+        flex-direction: row-reverse;
+
+        .text {
+            align-self: center;
+        }
+    }
+
+    .couple {
+        gap: 30px;
+        margin-bottom: 50px;
+
+        img {
+            width: 50%;
+        }
+
+        .text {
+            align-self: center;
+            width: 50%;
+
+            .title {
+                font-size: rem(35px);
+            }
+
+            .desc {
+                font-size: rem(20px);
+                line-height: 30px;
+            }
+        }
+    }
+}
