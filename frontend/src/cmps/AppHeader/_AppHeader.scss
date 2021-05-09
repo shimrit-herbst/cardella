@@ -1,0 +1,55 @@
+@import '../../styles/styles.scss';
+
+header.main-header {
+    color: $clr3;
+    height: rem(40px);
+    background-color: $clr1;
+    grid-template-columns: repeat(3, 1fr);
+    grid-template-areas: "leftHeader logo rightHeader";
+
+    .header-btn {
+        text-decoration: none;
+        color: inherit;
+        font-weight: 600;
+        // TODO - background-color: rgba($clr2, 0.24)
+        background-color: rgba(255, 255, 255, 0.24);
+        border-radius: rem(4px);
+        margin: rem(3px);
+        padding: rem(5px);
+
+        &:hover {
+            background-color: rgba(255, 255, 255, 0.377);
+            transition-duration: 150ms;
+        }
+    }
+
+    .main-header-left {
+        justify-content: flex-start;
+        grid-area: leftHeader;
+        align-self: center;
+        margin-left: rem(8px);
+        width: rem(32px);
+    }
+
+    .logo {
+        justify-content: center;
+        grid-area: logo;
+        align-self: center;
+
+        img {
+            max-width: rem(90px);
+            margin-top: 6px;
+
+            &:hover {
+                opacity: 0.5;
+            }
+        }
+    }
+
+    .main-header-right {
+        justify-content: flex-end;
+        grid-area: rightHeader;
+        align-items: center;
+        margin-right: rem(8px);
+    }
+}

@@ -1,3 +1,63 @@
+// Font size
+
+.fs12 {
+    font-size: rem(12px);
+}
+
+.fs14 {
+    font-size: rem(14px);
+}
+
+.fs16 {
+    font-size: rem(16px);
+}
+
+.fs18 {
+    font-size: rem(18px);
+}
+
+.fs20 {
+    font-size: rem(20px);
+}
+
+.fs22 {
+    font-size: rem(22px);
+}
+
+.fs24 {
+    font-size: rem(24px);
+}
+
+.fs30 {
+    font-size: rem(30px);
+}
+
+// General
+
 .flex {
     display: flex;
+}
+
+.f-center {
+    justify-content: center;
+    align-items: center;
+}
+
+.f-col {
+    flex-direction: column;
+}
+
+.f-row {
+    flex-direction: row;
+}
+
+.grid {
+    display: grid;
+}
+
+.clr-btn {
+    background-color: transparent;
+    border: none;
+    outline: none;
+    cursor: pointer;
 }

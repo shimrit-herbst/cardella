@@ -1,4 +1,11 @@
-// COLOR PALETTE
+// Colors
 
-$darkGrey: #333;
-$white: #F4F5F7;
+$clr1:#333333; // main text color
+$clr2:#5d5d5d;
+$clr3:#f5f5f5; //white text color
+
+// Breakpoints
+
+$break-narrow: 500px;
+$break-normal: 700px;
+$break-wide: 960px;

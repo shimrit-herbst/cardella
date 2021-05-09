@@ -1,7 +1,8 @@
-//SETUP
-@import 'setup/_variables';
-@import 'setup/_functions';
+// Setup
+@import 'setup/variables';
+@import 'setup/functions';
+@import 'setup/mixins';
 
-//BASICS
-@import 'basics/_base';
-@import 'basics/_helpers';
+// Basics
+@import 'basics/base';
+@import 'basics/helpers';
