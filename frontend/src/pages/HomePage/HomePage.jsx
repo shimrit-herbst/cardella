@@ -1,20 +1,23 @@
+import { Link } from 'react-router-dom';
 import AppFooter from '../../cmps/AppFooter';
 import './_HomePage.scss';
 
 function HomePage() {
     return <div className="home">
         <div className="hero-container flex">
-            <div className="hero-title flex">
+            <div className="hero-title flex f-col">
                 <img className="logo" src="https://res.cloudinary.com/morshva/image/upload/v1607179956/logo-black_bl4s9d.png" alt="Logo" />
                 <h1>Putting the pieces together can be truly rewarding. Cardella
                     is here to help lead your team on the path to success!</h1>
-                <h4 className="link flex">Let's Get Started</h4>
+                <Link to="/boards/5fca2d38e4167fe6dfcfbec5" className="link flex">
+                    <h4>Let's Get Started</h4>
+                </Link>
             </div>
             <img className="hero-img flex"
                 src="https://res.cloudinary.com/shimrit/image/upload/v1606990002/cardella/9814_szxc5a.jpg" alt="Hero"
             />
         </div>
-        <div className="main-container flex">
+        <div className="main-container flex f-col">
             <div className="couple flex">
                 <div className="text">
                     <h2 className="title">Working together is easy!</h2>
