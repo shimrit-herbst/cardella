@@ -6,7 +6,6 @@ class _Board extends Component {
   componentDidMount() {
     const boardId = this.props.match.params.boardId;
     this.props.loadBoardAndSetCurrBoard(boardId);
-    console.log(this.props);
   }
 
   render() {
