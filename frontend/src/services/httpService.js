@@ -1,11 +1,10 @@
 import Axios from 'axios';
-// import { useHistory } from "react-router-dom";
 
 const BASE_URL = process.env.NODE_ENV === 'production'
     ? '/api/'
     : '//localhost:3030/'
-    // ? '/api/'
-    // : '//localhost:3030/api/'
+// ? '/api/'
+// : '//localhost:3030/api/'
 
 var axios = Axios.create({
     withCredentials: true
@@ -27,7 +26,6 @@ export default {
 }
 
 async function Ajax(endpoint, method = 'get', data = null) {
-    // let history = useHistory();
     try {
         const res = await axios({
             url: `${BASE_URL}${endpoint}`,
@@ -37,9 +35,6 @@ async function Ajax(endpoint, method = 'get', data = null) {
         return res.data;
     }
     catch (err) {
-        // if (err.response.status === 401) {
-        // history.push('/');
-        // }
         console.log(`Had issues ${method}ing to server`, err)
         throw err;
     }
