@@ -1,11 +1,11 @@
 import { Component } from 'react';
 import { connect } from 'react-redux';
-import { loadBoard } from '../../store/actions/boardActions';
+import { loadBoardAndSetCurrBoard } from '../../store/actions/boardActions';
 
 class _Board extends Component {
   componentDidMount() {
     const boardId = this.props.match.params.boardId;
-    this.props.loadBoard(boardId);
+    this.props.loadBoardAndSetCurrBoard(boardId);
     console.log(this.props);
   }
 
@@ -25,6 +25,6 @@ function mapStateToProps(state) {
   }
 }
 const mapDispatchToProps = {
-  loadBoard,
+  loadBoardAndSetCurrBoard,
 }
 export const Board = connect(mapStateToProps, mapDispatchToProps)(_Board);

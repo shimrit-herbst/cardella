@@ -11,7 +11,7 @@ export function boardReducer(state = INITIAL_STATE, action) {
                 ...state,
                 boards: action.boards
             }
-        case 'SET_BOARD':
+        case 'SET_CURR_BOARD':
             return {
                 ...state,
                 currBoard: action.board

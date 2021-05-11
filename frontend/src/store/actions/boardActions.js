@@ -7,9 +7,9 @@ export function loadBoards() {
     }
 }
 
-export function loadBoard(boardId) {
+export function loadBoardAndSetCurrBoard(boardId) {
     return async dispatch => {
         const board = await boardService.getBoardById(boardId);
-        dispatch({ type: 'SET_BOARD', board });
+        dispatch({ type: 'SET_CURR_BOARD', board });
     }
 }
