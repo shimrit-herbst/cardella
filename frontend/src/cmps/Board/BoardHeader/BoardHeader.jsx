@@ -1,8 +1,8 @@
 
-function BoardHeader(props) {
+function BoardHeader(headerText) {
     return (
         <div>
-            <h4>{props}</h4>
+            <h4>{headerText}</h4>
         </div>
     )
 }
