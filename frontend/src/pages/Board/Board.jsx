@@ -13,7 +13,7 @@ class _Board extends Component {
     const { currBoard } = this.props;
     return (
       <div className="board">
-        <h1>Board Name: {currBoard.title}!</h1>
+        <h1>{currBoard.title}!</h1>
       </div>
     )
   }
