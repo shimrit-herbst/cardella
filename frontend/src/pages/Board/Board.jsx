@@ -8,6 +8,12 @@ class _Board extends Component {
     this.props.loadBoardAndSetCurrBoard(boardId);
   }
 
+  componentDidUpdate(prevProps) {
+    if (prevProps.match.params.boardId !== this.props.match.params.boardId) {
+      this.props.loadBoardAndSetCurrBoard(this.props.match.params.boardId)
+    }
+  }
+
   render() {
     const { currBoard } = this.props;
     return (
