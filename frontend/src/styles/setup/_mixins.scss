@@ -1,3 +1,14 @@
+// Mixin buttons
+
+@mixin menu {
+    color: $clr1;
+    display: flex;
+    flex-direction: column;
+    z-index: 1;
+    background-color: #f4f5f7;
+    box-shadow: 0 12px 24px -6px rgba(47, 52, 59, 0.25), 0 0 0 1px rgba(9, 30, 66, .08);
+}
+
 // Media queries Breakpoint mixins
 
 @mixin for-mobile-layout {

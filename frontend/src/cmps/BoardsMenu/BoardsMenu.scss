@@ -1,0 +1,31 @@
+@import '../../styles/styles.scss';
+
+.boards-menu-container {
+
+    @include menu;
+    position: fixed;
+    top: 40px;
+    right: 0;
+    z-index: 5;
+
+    .boards-menu {
+        .boards-list>* {
+            padding: 10px 40px;
+        }
+
+        .board-line {
+            cursor: pointer;
+
+            &:hover {
+                border-radius: 3px;
+                background-color: rgba(65, 65, 65, 0.109);
+                transition-duration: 150ms;
+            }
+
+            .link {
+                display: flex;
+                font-weight: bold;
+            }
+        }
+    }
+}
