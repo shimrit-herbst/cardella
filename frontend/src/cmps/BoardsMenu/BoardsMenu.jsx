@@ -22,8 +22,9 @@ class _BoardsMenu extends Component {
                         {
                             boards.map(board =>
                                 <li className="board-line flex" key={board._id} onClick={this.onToggleBoardsMenu}>
-                                    <Link to={`/boards/${board._id}`} className="link">
-                                        <h2>{board.title}</h2>
+                                    <Link to={`/boards/${board._id}`} className="flex">
+                                        <img src={board.style.backgroundImgUrl} className="img-preview" alt="" />
+                                        <h2 className="fs16 link">{board.title}</h2>
                                     </Link>
                                 </li>
                             )

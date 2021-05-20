@@ -42,3 +42,16 @@ ul {
     list-style: none;
     padding: 0;
 }
+
+a {
+    all: unset;
+}
+
+a:link {
+    text-decoration: none;
+    color: #5d5d5d;
+}
+
+a:visited {
+    color: inherit;
+}
