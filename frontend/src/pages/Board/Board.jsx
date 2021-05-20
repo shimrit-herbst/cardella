@@ -1,6 +1,8 @@
 import { Component } from 'react';
 import { connect } from 'react-redux';
 import { loadBoardAndSetCurrBoard } from '../../store/actions/boardActions';
+import BoardHeader from '../../cmps/Board/BoardHeader';
+import './Board.scss';
 
 class _Board extends Component {
   componentDidMount() {
@@ -14,11 +16,16 @@ class _Board extends Component {
     }
   }
 
+
   render() {
     const { currBoard } = this.props;
+    const style = (currBoard && currBoard.style) ? {
+      'background-color': currBoard.style.backgroundColor,
+      'background-image': `url(${currBoard.style.backgroundImgUrl})`
+    } : {};
     return (
-      <div className="board">
-        <h1>{currBoard.title}!</h1>
+      <div className="app-container" style={style}>
+        <BoardHeader board={currBoard} />
       </div>
     )
   }

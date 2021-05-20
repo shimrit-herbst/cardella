@@ -1,0 +1,29 @@
+@import '../../../styles/styles.scss';
+
+.board-header {
+    background-color: ($clr1, 0.259);
+    height: rem(50px);
+    color: $clr2;
+    grid-template-columns: repeat(3, 1fr);
+    grid-template-areas: "leftBoardHeader avaterBoardHeader rightBoardHeader";
+
+    .left-board-header {
+        grid-area: leftBoardHeader;
+        margin-left: rem(8px);
+        justify-content: flex-start;
+        align-self: center;
+
+        .board-title {
+            color: $clr3;
+            outline: none;
+            margin-bottom: 0;
+            padding: 0 10px 0 3px;
+            border-radius: 4px;
+
+            &:hover {
+                background-color: $clr4;
+                transition-duration: 150ms;
+            }
+        }
+    }
+}
