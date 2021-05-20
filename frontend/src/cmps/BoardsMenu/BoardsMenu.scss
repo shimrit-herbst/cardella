@@ -4,8 +4,8 @@
 
     @include menu;
     position: fixed;
-    top: 40px;
-    right: 0;
+    top: rem(40px);
+    right: rem(42px);
     z-index: 5;
 
     .boards-menu {
@@ -23,8 +23,14 @@
             }
 
             .link {
-                display: flex;
                 font-weight: bold;
+                color: $clr2;
+            }
+
+            .img-preview {
+                width: rem(40px);
+                height: rem(40px);
+                margin-right: rem(10px);
             }
         }
     }
