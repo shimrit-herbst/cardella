@@ -8,9 +8,11 @@ class _BoardsMenu extends Component {
     componentDidMount() {
         this.props.loadBoards();
     }
+
     onToggleBoardsMenu = () => {
         this.props.onToggleBoardsMenu();
     }
+
     render() {
         const { boards } = this.props;
         return (
@@ -33,7 +35,6 @@ class _BoardsMenu extends Component {
     }
 }
 
-
 function mapStateToProps(state) {
     return {
         boards: state.boardReducer.boards,
@@ -41,8 +42,10 @@ function mapStateToProps(state) {
 
     }
 }
+
 const mapDispatchToProps = {
     loadBoards,
     loadBoardAndSetCurrBoard,
 }
+
 export const BoardsMenu = connect(mapStateToProps, mapDispatchToProps)(_BoardsMenu);

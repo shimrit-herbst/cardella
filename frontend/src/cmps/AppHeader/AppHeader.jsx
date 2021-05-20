@@ -27,7 +27,7 @@ function _AppHeader() {
             {isOpen && <BoardsMenu onToggleBoardsMenu={toggleBoardsMenu} />}
             <Link to="/login" className="header-btn fs16">Login</Link>
         </div>
-    </header >
+    </header>
 }
 
 export const AppHeader = withRouter(_AppHeader);
