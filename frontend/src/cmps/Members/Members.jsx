@@ -15,7 +15,7 @@ function Members({ members }) {
                                 round={true}
                                 color="#dfe1e6"
                                 fgColor="#333333"
-                                textSizeRatio="2.5"
+                                textSizeRatio={2.5}
                             />
                         </li>
                     )
