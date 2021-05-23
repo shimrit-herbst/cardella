@@ -3,7 +3,7 @@
 .board-header {
     background-color: ($clr1, 0.259);
     height: rem(50px);
-    color: $clr2;
+    color: $clr3;
     grid-template-columns: repeat(3, 1fr);
     grid-template-areas: "leftBoardHeader avaterBoardHeader rightBoardHeader";
 
@@ -14,7 +14,6 @@
         align-self: center;
 
         .board-title {
-            color: $clr3;
             outline: none;
             margin-bottom: 0;
             padding: 0 10px 0 3px;
