@@ -25,4 +25,18 @@
             }
         }
     }
+
+    .avatar-board-header {
+        grid-area: avaterBoardHeader;
+        justify-content: center;
+        align-items: center;
+
+        .avatar-list {
+            margin: rem(4px);
+        }
+
+        .avatar {
+            margin: rem(1px);
+        }
+    }
 }

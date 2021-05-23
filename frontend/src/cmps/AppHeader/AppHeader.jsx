@@ -15,7 +15,7 @@ function _AppHeader() {
 
     return <header className="main-header grid">
         <div className="main-header-left flex">
-            <Link to="/" className="header-btn fs16"><FontAwesomeIcon icon={faHome} /></Link>
+            <Link to="/" className="header-btn fs16 clr-btn"><FontAwesomeIcon icon={faHome} /></Link>
         </div>
 
         <div className="logo flex">
@@ -23,9 +23,9 @@ function _AppHeader() {
         </div>
 
         <div className="main-header-right flex">
-            <button className="clr-btn header-btn fs16" onClick={toggleBoardsMenu}><FontAwesomeIcon icon={faTh} /> Boards</button>
+            <button className="header-btn fs16 clr-btn" onClick={toggleBoardsMenu}><FontAwesomeIcon icon={faTh} /> Boards</button>
             {isOpen && <BoardsMenu onToggleBoardsMenu={toggleBoardsMenu} />}
-            <Link to="/login" className="header-btn fs16">Login</Link>
+            <Link to="/login" className="header-btn fs16 clr-btn">Login</Link>
         </div>
     </header>
 }
