@@ -1,5 +1,17 @@
 // Mixin buttons
 
+@mixin dark-buttons {
+    outline: none;
+    border-radius: 4px;
+    border: none;
+    color: $clr2;
+
+    &:hover {
+        background-color: $clr5;
+        transition-duration: 150ms;
+    }
+}
+
 @mixin menu {
     color: $clr1;
     display: flex;
@@ -32,6 +44,24 @@
 @mixin for-wide-layout {
     @media (min-width: $break-wide) {
         @content;
+    }
+}
+
+@mixin scrollbar1 {
+    ::-webkit-scrollbar {
+        width: 10px;
+        height: 10px;
+    }
+
+    ::-webkit-scrollbar-track {
+        background: rgba(141, 141, 141, 0.281);
+        border-radius: 20px;
+
+    }
+
+    ::-webkit-scrollbar-thumb {
+        background-color: rgba(146, 141, 141, 0.534);
+        border-radius: 20px;
     }
 }
 

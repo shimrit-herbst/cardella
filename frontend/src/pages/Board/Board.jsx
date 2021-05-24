@@ -2,6 +2,7 @@ import { Component } from 'react';
 import { connect } from 'react-redux';
 import { loadBoardAndSetCurrBoard } from '../../store/actions/boardActions';
 import BoardHeader from '../../cmps/Board/BoardHeader';
+import ListCmp from '../../cmps/List/ListCmp/ListCmp';
 import './Board.scss';
 
 class _Board extends Component {
@@ -19,13 +20,18 @@ class _Board extends Component {
 
   render() {
     const { currBoard } = this.props;
+    const lists = currBoard.lists;
     const style = (currBoard && currBoard.style) ? {
-      'background-color': currBoard.style.backgroundColor,
-      'background-image': `url(${currBoard.style.backgroundImgUrl})`
+      backgroundColor: currBoard.style.backgroundColor,
+      backgroundImage: `url(${currBoard.style.backgroundImgUrl})`
     } : {};
     return (
       <div className="app-container" style={style}>
         <BoardHeader board={currBoard} />
+        {lists &&
+          <div className="lists-container">
+            {lists.map((list, index) => <ListCmp board={currBoard} index={index} />)}
+          </div>}
       </div>
     )
   }

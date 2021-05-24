@@ -1,0 +1,58 @@
+@import '../../../styles/styles.scss';
+
+.list-container {
+    background-color: #ebecf0;
+    white-space: normal;
+    max-height: calc(100vh - 140px);
+    flex-direction: column;
+    align-items: center;
+    border-radius: 3px;
+    margin: 0 4px;
+    width: 272px;
+
+    .list-header {
+        width: 100%;
+        padding: 8px 10px 4px;
+        color: $clr2;
+
+        h4 {
+            margin: 0;
+            font-weight: 600;
+        }
+
+        .list-title {
+            border: none;
+            width: 100%;
+            height: 26px;
+            padding: 5px;
+            align-items: center;
+
+            &:hover {
+                background-color: rgba(65, 65, 65, 0.363);
+                text-decoration: 150ms;
+                background-color: $clr3;
+            }
+        }
+
+        .list-open-menu {
+            position: relative;
+
+            .icon {
+                align-items: center;
+            }
+
+            cursor: pointer;
+            padding: 7px;
+            @include dark-buttons;
+        }
+    }
+
+    .list-cards {
+        margin: 0 4px;
+        padding: 0 4px;
+        min-height: 0;
+        overflow-x: hidden;
+        overflow-y: auto;
+        @include scrollbar1;
+    }
+}

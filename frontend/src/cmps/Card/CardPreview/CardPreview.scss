@@ -1,0 +1,26 @@
+@import '../../../styles/styles.scss';
+
+.card-preview-container {
+    width: 100%;
+    border-radius: 3px;
+    color: $clr2;
+    box-shadow: 0 1px 0 rgba(9, 30, 66, .25);
+    cursor: pointer;
+    margin-bottom: 8px;
+
+    img {
+        width: 100%;
+        border-top-left-radius: 3px;
+        border-top-right-radius: 3px;
+    }
+
+    .card-content {
+        width: rem(256px);
+        padding: 6px 8px 2px;
+        font-weight: 400;
+
+        &:hover {
+            background-color: rgb(240, 240, 240);
+        }
+    }
+}
