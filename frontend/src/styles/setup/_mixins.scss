@@ -8,7 +8,7 @@
 
     &:hover {
         background-color: $clr5;
-        transition-duration: 150ms;
+        @include transition(150ms);
     }
 }
 
@@ -82,4 +82,8 @@
         background-color: rgba(146, 141, 141, 0.534);
         border-radius: 20px;
     }
+}
+
+@mixin transition($duration) {
+    translate: $duration;
 }

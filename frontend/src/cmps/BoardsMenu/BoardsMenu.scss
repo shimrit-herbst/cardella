@@ -18,8 +18,8 @@
 
             &:hover {
                 border-radius: 3px;
-                background-color: rgba(65, 65, 65, 0.109);
-                transition-duration: 150ms;
+                background-color: $clr5;
+                @include transition(150ms);
             }
 
             .link {

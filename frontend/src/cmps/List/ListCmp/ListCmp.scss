@@ -29,7 +29,7 @@
             align-items: center;
 
             &:hover {
-                background-color: rgba(65, 65, 65, 0.363);
+                background-color: $clr5;
                 text-decoration: 150ms;
                 background-color: $clr3;
             }
@@ -58,7 +58,6 @@
     }
 
     .add-card-container {
-
         .add-another-card-btn {
             width: rem(256px);
             padding: 4px 8px;
