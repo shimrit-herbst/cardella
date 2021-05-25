@@ -1,0 +1,55 @@
+@import '../../../styles/styles.scss';
+
+.list-menu {
+
+    @include menu;
+    position: absolute;
+    top: 39px;
+    right: -20px;
+    width: 173px;
+    padding: 6px 8px 2px;
+    font-weight: 400;
+    z-index: 5;
+    border-radius: 3px;
+    cursor: pointer;
+
+    .list-menu-header {
+        justify-content: space-between;
+        align-items: center;
+        margin: 0 6px 0 12px;
+        border-bottom: 1px solid rgba(9, 30, 66, .13);
+
+        .list-menu-close-btn {
+            &:hover {
+                background-color: rgba(65, 65, 65, 0.109);
+                transition-duration: 150ms;
+            }
+        }
+
+        h3 {
+            line-height: 20px;
+            margin: 10px auto;
+        }
+    }
+
+    .list-menu-content {
+        justify-content: center;
+        align-items: center;
+
+        ul {
+            width: 100%;
+
+            li {
+                line-height: 30px;
+                text-align: start;
+                padding-left: 3px;
+
+                &:hover {
+                    border-radius: 3px;
+                    background-color: rgba(65, 65, 65, 0.109);
+                    transition-duration: 150ms;
+                }
+            }
+        }
+    }
+}
