@@ -21,7 +21,7 @@
         .list-menu-close-btn {
             &:hover {
                 background-color: $clr5;
-                @include transition(150ms);
+                @include transition();
             }
         }
 
@@ -46,7 +46,7 @@
                 &:hover {
                     border-radius: 3px;
                     background-color: $clr5;
-                    @include transition(150ms);
+                    @include transition();
                 }
             }
         }

@@ -19,7 +19,7 @@
             &:hover {
                 border-radius: 3px;
                 background-color: $clr5;
-                @include transition(150ms);
+                @include transition();
             }
 
             .link {

@@ -8,7 +8,7 @@
 
     &:hover {
         background-color: $clr5;
-        @include transition(150ms);
+        @include transition();
     }
 }
 
@@ -84,6 +84,6 @@
     }
 }
 
-@mixin transition($duration) {
+@mixin transition($duration: 150ms) {
     translate: $duration;
 }
