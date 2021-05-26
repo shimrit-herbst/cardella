@@ -30,7 +30,7 @@ class _Board extends Component {
         <BoardHeader board={currBoard} />
         {lists &&
           <div className="lists-container">
-            {lists.map((list, index) => <ListCmp board={currBoard} index={index} />)}
+            {lists.map((list, index) => <ListCmp board={currBoard} index={index} key={index} />)}
           </div>}
       </div>
     )

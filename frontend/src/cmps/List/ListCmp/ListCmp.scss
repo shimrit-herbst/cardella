@@ -9,6 +9,7 @@
     border-radius: 3px;
     margin: 0 4px;
     width: 272px;
+    position: relative;
 
     .list-header {
         width: 100%;
@@ -28,8 +29,8 @@
             align-items: center;
 
             &:hover {
-                background-color: rgba(65, 65, 65, 0.363);
-                text-decoration: 150ms;
+                background-color: $clr5;
+                text-decoration: none;
                 background-color: $clr3;
             }
         }
@@ -54,5 +55,19 @@
         overflow-x: hidden;
         overflow-y: auto;
         @include scrollbar1;
+    }
+
+    .add-card-container {
+        .add-another-card-btn {
+            width: rem(256px);
+            padding: 4px 8px;
+            margin: 0 8px 8px;
+            border-radius: 4px;
+            background-color: $clr5;
+
+            &:hover {
+                background-color: $clr6;
+            }
+        }
     }
 }

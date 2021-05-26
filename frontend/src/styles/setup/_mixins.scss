@@ -8,12 +8,12 @@
 
     &:hover {
         background-color: $clr5;
-        transition-duration: 150ms;
+        @include transition();
     }
 }
 
 @mixin menu {
-    color: $clr1;
+    color: $clr2;
     display: flex;
     flex-direction: column;
     z-index: 1;
@@ -82,4 +82,8 @@
         background-color: rgba(146, 141, 141, 0.534);
         border-radius: 20px;
     }
+}
+
+@mixin transition($duration: 150ms) {
+    translate: $duration;
 }
