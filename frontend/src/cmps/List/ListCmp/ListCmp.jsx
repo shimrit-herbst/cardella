@@ -9,7 +9,7 @@ function ListCmp(props) {
     const list = props.board.lists[props.index];
     const cards = list.cards;
     const [isOpen, setIsOpen] = useState(false);
-    const [isNewCard, setIsNew] = useState(false);
+    const [isNewCard, setIsNewCard] = useState(false);
     const [newCardTitle, setNewCardTitle] = useState('');
 
     const toggleOpenListMenu = () => {
@@ -17,11 +17,11 @@ function ListCmp(props) {
     }
 
     const onOpenNewCard = () => {
-        setIsNew(!isNewCard);
+        setIsNewCard(!isNewCard);
     }
 
     const onCloseNewCard = () => {
-        setIsNew(!isNewCard);
+        setIsNewCard(!isNewCard);
     }
 
     const onChangeHandler = (ev) => {
