@@ -1,4 +1,4 @@
-import { boardService } from "../../services/boardService"
+import { boardService } from '../../services/boardService';
 
 //BOARD//
 export function loadBoards() {
@@ -7,7 +7,7 @@ export function loadBoards() {
             const boards = await boardService.getBoards();
             dispatch({ type: 'SET_BOARDS', boards });
         } catch (err) {
-            console.log('ERROR!', err);
+            console.log('Cannot load boards', err);
         }
     }
 }
@@ -18,30 +18,17 @@ export function loadBoardAndSetCurrBoard(boardId) {
             const board = await boardService.getBoardById(boardId);
             dispatch({ type: 'SET_CURR_BOARD', board });
         } catch (err) {
-            console.log('ERROR!', err);
+            console.log('Cannot load board', err);
         }
     }
 }
 
-// export function updateBoards({ board }) {
-//     return async dispatch => {
-//         try {
-//             dispatch({ type: 'UPDATE_BOARDS', board });
-//         } catch (err) {
-//             console.log('ERROR!', err);
-//         }
-//     }
-// }
-
 //CARD//
-export function addCard({ cardTitle, listId, board }) {
+export function updateCurrBoard({ board }) {
     return async dispatch => {
         try {
-            const card = boardService.getEmptyCard(cardTitle);
-            dispatch({ type: "ADD_CARD", listId, card });
-            console.log(await boardService.updateBoard(board));
-            dispatch({ type: 'UPDATE_BOARDS', board });
-            // updateBoards(board);
+            dispatch({ type: "UPDATE_CURR_BOARD", board });
+            await boardService.updateBoard(board);
         } catch (err) {
             console.log('ERROR!', err);
         }

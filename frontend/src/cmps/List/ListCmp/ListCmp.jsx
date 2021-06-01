@@ -1,19 +1,16 @@
-import { useState, useEffect } from 'react';
-import { useDispatch } from 'react-redux';
+import { useState } from 'react';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
-import { faEllipsisH } from '@fortawesome/fontawesome-free-solid';
-import { addCard } from '../../../store/actions/boardActions';
+import { faEllipsisH, faTimes } from '@fortawesome/fontawesome-free-solid';
 import CardPreview from '../../Card/CardPreview/CardPreview';
 import ListMenuCmp from '../ListMenuCmp/ListMenuCmp';
 import './ListCmp.scss';
 
-function ListCmp({ board, index }) {
-    const list = board.lists[index];
+function ListCmp(props) {
+    const list = props.board.lists[props.index];
     const cards = list.cards;
     const [isOpen, setIsOpen] = useState(false);
     const [isNew, setIsNew] = useState(false);
     const [newCardTitle, setNewCardTitle] = useState('');
-    const dispatch = useDispatch();
 
     const toggleOpenListMenu = () => {
         setIsOpen(!isOpen);
@@ -23,22 +20,27 @@ function ListCmp({ board, index }) {
         setIsNew(!isNew);
     }
 
+    const onCloseNewCard = () => {
+        setIsNew(!isNew);
+    }
+
     const onChangeHandler = (ev) => {
         const value = ev.target.value;
         setNewCardTitle(value);
     }
 
-    useEffect(() => {
-        console.log('newCardTitle', newCardTitle);
-    }, [newCardTitle]);
-
-    const OnAddCard = (ev) => {
-        if (ev.keyCode === 13) {
-            dispatch(addCard({ cardTitle: newCardTitle, listId: list.id, board }));
-            onOpenNewCard();
-            setNewCardTitle('');
-        }
+    const onAddCard = () => {
+        if (newCardTitle === '') return;
+        props.onAddCard(newCardTitle, list.id)
+        onOpenNewCard();
+        setNewCardTitle('');
     }
+
+    const handleKeypress = (ev) => {
+        if (ev.keyCode === 13) {
+            onAddCard()
+        }
+    };
 
     return (
         <div className="list-container flex">
@@ -60,22 +62,23 @@ function ListCmp({ board, index }) {
                     >
                         + Add another card
                     </button>) :
-                    (<div className="add-card-button-inside clr-btn flex">
+                    (<div className="add-card-button-inside clr-btn flex f-col">
                         <input
                             type="text"
                             value={newCardTitle}
                             onChange={onChangeHandler}
                             placeholder="Enter a title for this card..."
-                            onKeyUp={OnAddCard}
+                            onKeyUp={handleKeypress}
+                            style={(newCardTitle === '') ? { border: '1px solid red' } : null}
                         />
-                        {/* <div className="add-card-inside-cont flex">
-                            <button className="add-card-btn clr-btn" onClick={addCard}>
+                        <div className="add-card-inside-cont flex">
+                            <button className="add-card-btn clr-btn" onClick={onAddCard}>
                                 Add card
                         </button>
                             <button className="clr-btn" onClick={onCloseNewCard}>
                                 <FontAwesomeIcon className="icon" icon={faTimes} />
                             </button>
-                        </div> */}
+                        </div>
                     </div>)
                 }
             </div >

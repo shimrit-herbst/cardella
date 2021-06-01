@@ -69,5 +69,55 @@
                 background-color: $clr6;
             }
         }
+
+        .add-card-button-inside {
+            justify-content: center;
+            align-items: center;
+
+            .add-card-inside-cont {
+                width: 100%;
+                justify-content: space-between;
+                margin-bottom: 4px;
+            }
+
+            input {
+                width: rem(256px);
+                padding: 25px 5px;
+                box-shadow: 0 1px 0 rgba(9, 30, 66, .25);
+                border: none;
+                border-radius: 3px;
+                margin-bottom: 6px;
+            }
+
+            button {
+                margin: 4px 0 4px;
+                font-weight: 500;
+
+                &:hover:first-of-type {
+                    border-radius: 3px;
+                    background-color: $clr8;
+                    @include transition();
+                }
+
+                &:last-of-type {
+                    font-weight: 600;
+                    background-color: $clr5;
+                    border-radius: rem(4px);
+                }
+
+                &:hover:last-of-type {
+                    background-color: $clr4;
+                    @include transition();
+                }
+            }
+
+            .add-card-btn {
+                width: rem(230px);
+                padding: 5px;
+                color: $clr7;
+                border-radius: rem(4px);
+                background-color: $label1;
+            }
+        }
     }
 }

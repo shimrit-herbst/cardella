@@ -15,29 +15,13 @@ export function boardReducer(state = INITIAL_STATE, action) {
                 ...state,
                 currBoard: action.board
             }
-        case 'ADD_CARD':
-            const listIdx = state.currBoard.lists.findIndex(list => list.id === action.listId);
-            const cards = state.currBoard.lists[listIdx].cards;
-            return {
-                ...state,
-                currBoard: {
-                    ...state.currBoard,
-                    lists: [
-                        ...state.currBoard.lists.slice(0, listIdx),
-                        {
-                            ...state.currBoard.lists[listIdx],
-                            cards: [...cards, action.card],
-                        },
-                        ...state.currBoard.lists.slice(listIdx + 1),
-                    ],
-                }
-            }
-        case 'UPDATE_BOARDS':
+        case 'UPDATE_CURR_BOARD':
             const idx = state.boards.findIndex(currBoard => currBoard._id === action.board._id);
             state.boards.splice(idx, 1, action.board);
             return {
                 ...state,
-                boards: state.boards
+                bords: state.boards,
+                currBoard: action.board,
             }
         default:
             return state;
