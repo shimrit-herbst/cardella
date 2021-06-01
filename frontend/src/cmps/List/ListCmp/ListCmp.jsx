@@ -37,7 +37,7 @@ function ListCmp(props) {
     }
 
     const handleKeypress = (ev) => {
-        if (ev.keyCode === 13) {
+        if (ev.key === "Enter") {
             onAddCard()
         }
     };
