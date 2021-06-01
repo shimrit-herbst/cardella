@@ -4,7 +4,7 @@
     width: 100%;
     border-radius: 3px;
     color: $clr2;
-    box-shadow: 0 1px 0 rgba(9, 30, 66, .25);
+    @include box-shadow;
     cursor: pointer;
     margin-bottom: 8px;
 

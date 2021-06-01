@@ -87,3 +87,7 @@
 @mixin transition($duration: 150ms) {
     translate: $duration;
 }
+
+@mixin box-shadow {
+    box-shadow: 0 1px 0 rgba(9, 30, 66, 0.251);
+}

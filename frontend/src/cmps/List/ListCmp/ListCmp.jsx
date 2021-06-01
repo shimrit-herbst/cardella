@@ -1,18 +1,42 @@
 import { useState } from 'react';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
-import { faEllipsisH } from '@fortawesome/fontawesome-free-solid';
+import { faEllipsisH, faTimes } from '@fortawesome/fontawesome-free-solid';
 import CardPreview from '../../Card/CardPreview/CardPreview';
 import ListMenuCmp from '../ListMenuCmp/ListMenuCmp';
 import './ListCmp.scss';
 
-function ListCmp({ board, index }) {
-    const list = board.lists[index];
+function ListCmp(props) {
+    const list = props.board.lists[props.index];
     const cards = list.cards;
     const [isOpen, setIsOpen] = useState(false);
+    const [isNewCard, setIsNewCard] = useState(false);
+    const [newCardTitle, setNewCardTitle] = useState('');
 
     const toggleOpenListMenu = () => {
         setIsOpen(!isOpen);
     }
+
+    const toggleOpenNewCard = () => {
+        setIsNewCard(!isNewCard);
+    }
+
+    const onChangeHandler = (ev) => {
+        const value = ev.target.value;
+        setNewCardTitle(value);
+    }
+
+    const onAddCard = () => {
+        if (newCardTitle === '') return;
+        props.onAddCard(newCardTitle, list.id)
+        toggleOpenNewCard();
+        setNewCardTitle('');
+    }
+
+    const handleKeypress = (ev) => {
+        if (ev.key === "Enter") {
+            onAddCard()
+        }
+    };
 
     return (
         <div className="list-container flex">
@@ -28,11 +52,35 @@ function ListCmp({ board, index }) {
             </div>
 
             <div className="add-card-container">
-                <button className="add-another-card-btn clr-btn">
-                    + Add another card
-                </button>
-            </div>
-        </div>
+                {!isNewCard
+                    ?
+                    (<button className="add-another-card-btn clr-btn"
+                        onClick={toggleOpenNewCard}
+                    >
+                        + Add another card
+                    </button>)
+                    :
+                    (<div className="add-card-button-inside clr-btn flex f-col">
+                        <input
+                            type="text"
+                            value={newCardTitle}
+                            onChange={onChangeHandler}
+                            placeholder="Enter a title for this card..."
+                            onKeyUp={handleKeypress}
+                            style={(newCardTitle === '') ? { border: '1px solid red' } : null}
+                        />
+                        <div className="add-card-inside-cont flex">
+                            <button className="add-card-btn clr-btn" onClick={onAddCard}>
+                                Add card
+                        </button>
+                            <button className="clr-btn" onClick={toggleOpenNewCard}>
+                                <FontAwesomeIcon className="icon" icon={faTimes} />
+                            </button>
+                        </div>
+                    </div>)
+                }
+            </div >
+        </div >
     )
 }
 

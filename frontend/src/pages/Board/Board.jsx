@@ -1,6 +1,7 @@
 import { Component } from 'react';
 import { connect } from 'react-redux';
-import { loadBoardAndSetCurrBoard } from '../../store/actions/boardActions';
+import { boardService } from '../../services/boardService';
+import { updateCurrBoard, loadBoardAndSetCurrBoard } from '../../store/actions/boardActions';
 import BoardHeader from '../../cmps/Board/BoardHeader';
 import ListCmp from '../../cmps/List/ListCmp/ListCmp';
 import './Board.scss';
@@ -17,6 +18,15 @@ class _Board extends Component {
     }
   }
 
+  onAddCard = async (newCardTitle, listId) => {
+    const { currBoard } = this.props;
+    const board = JSON.parse(JSON.stringify(currBoard));
+    const listIdx = board.lists.findIndex(list => list.id === listId);
+    const cards = board.lists[listIdx].cards;
+    const card = await boardService.getEmptyCard(newCardTitle);
+    cards.push(card);
+    this.props.updateCurrBoard({ board });
+  }
 
   render() {
     const { currBoard } = this.props;
@@ -30,7 +40,7 @@ class _Board extends Component {
         <BoardHeader board={currBoard} />
         {lists &&
           <div className="lists-container">
-            {lists.map((list, index) => <ListCmp board={currBoard} index={index} key={index} />)}
+            {lists.map((list, index) => <ListCmp onAddCard={this.onAddCard} board={currBoard} index={index} key={index} />)}
           </div>}
       </div>
     )
@@ -44,5 +54,7 @@ function mapStateToProps(state) {
 }
 const mapDispatchToProps = {
   loadBoardAndSetCurrBoard,
+  updateCurrBoard,
 }
+
 export const Board = connect(mapStateToProps, mapDispatchToProps)(_Board);
