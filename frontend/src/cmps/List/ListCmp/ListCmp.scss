@@ -83,10 +83,10 @@
             input {
                 width: rem(256px);
                 padding: 25px 5px;
-                box-shadow: 0 1px 0 rgba(9, 30, 66, .25);
                 border: none;
                 border-radius: 3px;
                 margin-bottom: 6px;
+                @include box-shadow;
             }
 
             button {

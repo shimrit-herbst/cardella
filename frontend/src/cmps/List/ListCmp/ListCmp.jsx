@@ -16,11 +16,7 @@ function ListCmp(props) {
         setIsOpen(!isOpen);
     }
 
-    const onOpenNewCard = () => {
-        setIsNewCard(!isNewCard);
-    }
-
-    const onCloseNewCard = () => {
+    const toggleOpenNewCard = () => {
         setIsNewCard(!isNewCard);
     }
 
@@ -32,7 +28,7 @@ function ListCmp(props) {
     const onAddCard = () => {
         if (newCardTitle === '') return;
         props.onAddCard(newCardTitle, list.id)
-        onOpenNewCard();
+        toggleOpenNewCard();
         setNewCardTitle('');
     }
 
@@ -56,12 +52,14 @@ function ListCmp(props) {
             </div>
 
             <div className="add-card-container">
-                {!isNewCard ?
+                {!isNewCard
+                    ?
                     (<button className="add-another-card-btn clr-btn"
-                        onClick={onOpenNewCard}
+                        onClick={toggleOpenNewCard}
                     >
                         + Add another card
-                    </button>) :
+                    </button>)
+                    :
                     (<div className="add-card-button-inside clr-btn flex f-col">
                         <input
                             type="text"
@@ -75,7 +73,7 @@ function ListCmp(props) {
                             <button className="add-card-btn clr-btn" onClick={onAddCard}>
                                 Add card
                         </button>
-                            <button className="clr-btn" onClick={onCloseNewCard}>
+                            <button className="clr-btn" onClick={toggleOpenNewCard}>
                                 <FontAwesomeIcon className="icon" icon={faTimes} />
                             </button>
                         </div>

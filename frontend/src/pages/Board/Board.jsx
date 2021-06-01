@@ -54,7 +54,7 @@ function mapStateToProps(state) {
 }
 const mapDispatchToProps = {
   loadBoardAndSetCurrBoard,
-  updateCurrBoard
+  updateCurrBoard,
 }
 
 export const Board = connect(mapStateToProps, mapDispatchToProps)(_Board);
