@@ -6,7 +6,7 @@ import './ListMenuCmp.scss';
 class ListMenuCmp extends Component {
     render() {
         const { toggleOpenListMenu } = this.props;
-        // const { list } = this.props;
+
         return (
             <div className="list-menu flex">
                 <div className="list-menu-header flex">
