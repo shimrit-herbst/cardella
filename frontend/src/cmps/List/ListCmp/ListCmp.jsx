@@ -51,7 +51,6 @@ function ListCmp(props) {
                 </div>
                 {isOpen &&
                     <ListMenuCmp
-                        list={list}
                         toggleOpenNewCard={toggleOpenNewCard}
                         toggleOpenListMenu={toggleOpenListMenu}
                     />}
@@ -82,7 +81,7 @@ function ListCmp(props) {
                         <div className="add-card-inside-cont flex">
                             <button className="add-card-btn clr-btn" onClick={onAddCard}>
                                 Add card
-                        </button>
+                            </button>
                             <button
                                 className="clr-btn"
                                 onClick={toggleOpenNewCard}
