@@ -15,6 +15,8 @@
         width: 100%;
         padding: 8px 10px 4px;
         color: $clr2;
+        position: relative;
+        max-height: 40px;
 
         h4 {
             margin: 0;
@@ -33,18 +35,6 @@
                 text-decoration: none;
                 background-color: $clr3;
             }
-        }
-
-        .list-open-menu {
-            position: relative;
-
-            .icon {
-                align-items: center;
-            }
-
-            cursor: pointer;
-            padding: 7px;
-            @include dark-buttons;
         }
     }
 
