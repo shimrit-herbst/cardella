@@ -1,6 +1,6 @@
 import { useState } from 'react';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
-import { faTimes } from '@fortawesome/fontawesome-free-solid';
+import { faTimes, faEllipsisH } from '@fortawesome/fontawesome-free-solid';
 import CardPreview from '../../Card/CardPreview/CardPreview';
 import ListMenuCmp from '../ListMenuCmp/ListMenuCmp';
 import './ListCmp.scss';
@@ -10,6 +10,11 @@ function ListCmp(props) {
     const cards = list.cards;
     const [isNewCard, setIsNewCard] = useState(false);
     const [newCardTitle, setNewCardTitle] = useState('');
+    const [isOpen, setIsOpen] = useState(false);
+
+    const toggleOpenListMenu = () => {
+        setIsOpen(!isOpen);
+    }
 
     const toggleOpenNewCard = () => {
         setIsNewCard(!isNewCard);
@@ -33,17 +38,23 @@ function ListCmp(props) {
         }
         else if (ev.key === "Escape") {
             toggleOpenNewCard();
+            setNewCardTitle('');
         }
-    };
+    }
 
     return (
         <div className="list-container flex">
             <div className="list-header flex f-center">
                 <h4 className="list-title flex">{list.title}</h4>
-                <ListMenuCmp
-                    list={list}
-                    toggleOpenNewCard={toggleOpenNewCard}
-                />
+                <div className="list-open-menu flex" onClick={toggleOpenListMenu}>
+                    <FontAwesomeIcon className="icon fs13" icon={faEllipsisH} />
+                </div>
+                {isOpen &&
+                    <ListMenuCmp
+                        list={list}
+                        toggleOpenNewCard={toggleOpenNewCard}
+                        toggleOpenListMenu={toggleOpenListMenu}
+                    />}
             </div>
             <div className="list-cards">
                 {cards && cards.map(card => <CardPreview card={card} key={card.id} />)}
@@ -60,6 +71,7 @@ function ListCmp(props) {
                     :
                     (<div className="add-card-button-inside clr-btn flex f-col">
                         <input
+                            autoFocus
                             type="text"
                             value={newCardTitle}
                             onChange={onChangeHandler}

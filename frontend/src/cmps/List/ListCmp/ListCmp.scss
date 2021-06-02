@@ -11,12 +11,22 @@
     width: 272px;
     position: relative;
 
+    .list-open-menu {
+        position: relative;
+
+        .icon {
+            align-items: center;
+        }
+
+        cursor: pointer;
+        padding: 7px;
+        @include dark-buttons;
+    }
+
     .list-header {
         width: 100%;
         padding: 8px 10px 4px;
         color: $clr2;
-        position: relative;
-        max-height: 40px;
 
         h4 {
             margin: 0;
