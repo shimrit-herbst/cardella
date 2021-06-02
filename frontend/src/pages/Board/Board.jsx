@@ -28,6 +28,15 @@ class _Board extends Component {
     this.props.updateCurrBoard({ board });
   }
 
+  onUpdateListTitle = (newListTitle, list) => {
+    const { currBoard } = this.props;
+    const board = JSON.parse(JSON.stringify(currBoard));
+    const listId = list.id;
+    const listIdx = board.lists.findIndex(list => list.id === listId);
+    const lists = board.lists;
+    lists.splice(listIdx, 1, list);
+  }
+
   render() {
     const { currBoard } = this.props;
     const lists = currBoard.lists;
@@ -40,7 +49,13 @@ class _Board extends Component {
         <BoardHeader board={currBoard} />
         {lists &&
           <div className="lists-container">
-            {lists.map((list, index) => <ListCmp onAddCard={this.onAddCard} board={currBoard} index={index} key={index} />)}
+            {lists.map((list, index) =>
+              <ListCmp
+                onAddCard={this.onAddCard}
+                onUpdateListTitle={this.onUpdateListTitle}
+                board={currBoard}
+                index={index}
+                key={index} />)}
           </div>}
       </div>
     )
