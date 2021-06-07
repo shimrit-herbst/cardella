@@ -20,7 +20,22 @@
         font-weight: 400;
 
         &:hover {
-            background-color: rgb(240, 240, 240);
+            background-color: #f0f0f0;
+        }
+
+        .card-title-delete {
+            justify-content: space-between;
+            color: transparent;
+
+            &:hover {
+                color: $clr2;
+            }
+
+            .card-title {
+                display: block;
+                margin-bottom: rem(4px);
+                color: $clr2;
+            }
         }
     }
 }

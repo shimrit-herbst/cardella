@@ -37,6 +37,16 @@ class _Board extends Component {
     this.props.updateCurrBoard({ board });
   }
 
+  onRemoveCard = (cardId, listId) => {
+    const { currBoard } = this.props;
+    const board = JSON.parse(JSON.stringify(currBoard));
+    const listIdx = board.lists.findIndex(list => list.id === listId);
+    const cards = board.lists[listIdx].cards;
+    const cardIdx = cards.findIndex(card => card.id === cardId);
+    cards.splice(cardIdx, 1);
+    this.props.updateCurrBoard({ board });
+  }
+
   render() {
     const { currBoard } = this.props;
     const lists = currBoard.lists;
@@ -53,6 +63,7 @@ class _Board extends Component {
               <ListCmp
                 onAddCard={this.onAddCard}
                 onUpdateListTitle={this.onUpdateListTitle}
+                onRemoveCard={this.onRemoveCard}
                 board={currBoard}
                 index={index}
                 key={index} />)}
