@@ -22,7 +22,8 @@ function AddNewCard(props) {
         }
     }
 
-    const addCardAndClearInput = (newCardTitle) => {
+    const addCardAndClearInput = () => {
+        if (newCardTitle === '') return;
         props.onAddCard(newCardTitle);
         setNewCardTitle('');
     }
@@ -48,7 +49,7 @@ function AddNewCard(props) {
                         style={(newCardTitle === '') ? { border: '1px solid red' } : null}
                     />
                     <div className="add-card-inside-cont flex">
-                        <button className="add-card-btn clr-btn" onClick={() => addCardAndClearInput(newCardTitle)}>
+                        <button className="add-card-btn clr-btn" onClick={addCardAndClearInput}>
                             Add card
                         </button>
                         <button

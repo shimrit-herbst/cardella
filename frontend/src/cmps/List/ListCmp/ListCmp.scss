@@ -4,7 +4,6 @@
     background-color: #ebecf0;
     white-space: normal;
     max-height: calc(100vh - 140px);
-    flex-direction: column;
     align-items: center;
     border-radius: 3px;
     margin: 0 4px;
@@ -28,7 +27,7 @@
         padding: 8px 10px 4px;
         color: $clr2;
 
-        h4 {
+        input {
             margin: 0;
             font-weight: 600;
         }
@@ -39,11 +38,16 @@
             height: 26px;
             padding: 5px;
             align-items: center;
+            background-color: inherit;
 
             &:hover {
-                background-color: $clr5;
                 text-decoration: none;
                 background-color: $clr3;
+            }
+
+            &:focus {
+                border: 2px solid black;
+                border-radius: 3px;
             }
         }
     }

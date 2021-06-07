@@ -1,5 +1,4 @@
 import { useState } from 'react';
-import ContentEditable from 'react-contenteditable';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import { faEllipsisH } from '@fortawesome/fontawesome-free-solid';
 import CardPreview from '../../Card/CardPreview/CardPreview';
@@ -12,40 +11,55 @@ function ListCmp(props) {
     const cards = list.cards;
     const [isOpen, setIsOpen] = useState(false);
     const [isNewCard, setIsNewCard] = useState(false);
+    const [listTitle, setListTitle] = useState(list.title);
 
     const toggleOpenNewCard = () => {
         setIsNewCard(!isNewCard);
     }
+
     const toggleOpenListMenu = () => {
         setIsOpen(!isOpen);
     }
 
+    const onChangeHandler = (ev) => {
+        const value = ev.target.value;
+        setListTitle(value);
+    }
+
+    const handleKeypress = (ev) => {
+        if (ev.key === "Enter") {
+            ev.target.blur();
+        }
+        else if (ev.key === "Escape") {
+            ev.target.value = list.title;
+        }
+    }
+
     const onAddCard = (newCardTitle) => {
-        if (newCardTitle === '') return;
         props.onAddCard(newCardTitle, list.id)
         toggleOpenNewCard();
     }
 
     const onListTitleChange = (ev) => {
-        if (list.title === ev.target.innerText) return;
-        if (!ev.target.innerText) {
-            ev.target.innerText = list.title;
+        if (list.title === listTitle) return;
+        if (!listTitle) {
+            ev.target.value = list.title;
             return;
         }
-        console.log('here');
-        const newListTitle = ev.target.innerText;
-        props.onUpdateListTitle(newListTitle, list);
+        props.onUpdateListTitle(listTitle, list.id);
     }
 
     return (
-        <div className="list-container flex">
+        <div className="list-container flex f-col">
             <div className="list-header flex f-center">
-                <ContentEditable
-                    html={`<h4>${list.title}</h4>`}
-                    onChange={onListTitleChange}
+                <input
+                    type="text"
+                    value={listTitle}
+                    onChange={onChangeHandler}
+                    onKeyUp={handleKeypress}
+                    onBlur={onListTitleChange}
                     className="list-title flex"
-                >
-                </ContentEditable>
+                />
                 <div className="list-open-menu flex" onClick={toggleOpenListMenu}>
                     <FontAwesomeIcon className="icon fs13" icon={faEllipsisH} />
                 </div>

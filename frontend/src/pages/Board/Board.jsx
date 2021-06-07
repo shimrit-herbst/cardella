@@ -28,13 +28,13 @@ class _Board extends Component {
     this.props.updateCurrBoard({ board });
   }
 
-  onUpdateListTitle = (newListTitle, list) => {
+  onUpdateListTitle = (listTitle, listId) => {
     const { currBoard } = this.props;
     const board = JSON.parse(JSON.stringify(currBoard));
-    const listId = list.id;
     const listIdx = board.lists.findIndex(list => list.id === listId);
     const lists = board.lists;
-    lists.splice(listIdx, 1, list);
+    lists[listIdx].title = listTitle;
+    this.props.updateCurrBoard({ board });
   }
 
   render() {
@@ -45,10 +45,10 @@ class _Board extends Component {
       backgroundImage: `url(${currBoard.style.backgroundImgUrl})`
     } : {};
     return (
-      <div className="app-container" style={style}>
+      <div className="app-container flex f-col" style={style}>
         <BoardHeader board={currBoard} />
         {lists &&
-          <div className="lists-container">
+          <div className="lists-container flex">
             {lists.map((list, index) =>
               <ListCmp
                 onAddCard={this.onAddCard}
