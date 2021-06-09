@@ -1,6 +1,7 @@
 import { Component } from 'react';
 import { connect } from 'react-redux';
 import { boardService } from '../../services/boardService';
+import { utilService } from '../../services/utilService';
 import { updateCurrBoard, loadBoardAndSetCurrBoard } from '../../store/actions/boardActions';
 import BoardHeader from '../../cmps/Board/BoardHeader';
 import ListCmp from '../../cmps/List/ListCmp/ListCmp';
@@ -18,10 +19,29 @@ class _Board extends Component {
     }
   }
 
-  onAddCard = async (newCardTitle, listId) => {
+  getCurrBoardCopy() {
     const { currBoard } = this.props;
-    const board = JSON.parse(JSON.stringify(currBoard));
+    const board = utilService.getCopy(currBoard);
+    console.log("🚀 ~ file: Board.jsx ~ line 25 ~ _Board ~ getCurrBoardCopy ~ board", board)
+    return board;
+  }
+
+  getListIdxById(listId) {
+    const board = this.getCurrBoardCopy();
     const listIdx = board.lists.findIndex(list => list.id === listId);
+    return listIdx;
+  }
+
+  getCardIdxById(listId, cardId) {
+    const board = this.getCurrBoardCopy();
+    const listIdx = this.getListIdxById(listId);
+    const cardIdx = board.lists[listIdx].cards.findIndex(card => card.id === cardId);
+    return cardIdx;
+  }
+
+  onAddCard = async (newCardTitle, listId) => {
+    const board = this.getCurrBoardCopy();
+    const listIdx = this.getListIdxById(listId);
     const cards = board.lists[listIdx].cards;
     const card = await boardService.getEmptyCard(newCardTitle);
     cards.push(card);
@@ -29,20 +49,17 @@ class _Board extends Component {
   }
 
   onUpdateListTitle = (listTitle, listId) => {
-    const { currBoard } = this.props;
-    const board = JSON.parse(JSON.stringify(currBoard));
-    const listIdx = board.lists.findIndex(list => list.id === listId);
-    const lists = board.lists;
-    lists[listIdx].title = listTitle;
+    const board = this.getCurrBoardCopy();
+    const listIdx = this.getListIdxById(listId);
+    board.lists[listIdx].title = listTitle;
     this.props.updateCurrBoard({ board });
   }
 
   onRemoveCard = (cardId, listId) => {
-    const { currBoard } = this.props;
-    const board = JSON.parse(JSON.stringify(currBoard));
-    const listIdx = board.lists.findIndex(list => list.id === listId);
+    const board = this.getCurrBoardCopy();
+    const listIdx = this.getListIdxById(listId);
     const cards = board.lists[listIdx].cards;
-    const cardIdx = cards.findIndex(card => card.id === cardId);
+    const cardIdx = this.getCardIdxById(listId, cardId);
     cards.splice(cardIdx, 1);
     this.props.updateCurrBoard({ board });
   }
