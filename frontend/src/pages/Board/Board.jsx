@@ -1,6 +1,7 @@
 import { Component } from 'react';
 import { connect } from 'react-redux';
 import { boardService } from '../../services/boardService';
+import { utilService } from '../../services/utilService';
 import { updateCurrBoard, loadBoardAndSetCurrBoard } from '../../store/actions/boardActions';
 import BoardHeader from '../../cmps/Board/BoardHeader';
 import ListCmp from '../../cmps/List/ListCmp/ListCmp';
@@ -18,13 +19,47 @@ class _Board extends Component {
     }
   }
 
-  onAddCard = async (newCardTitle, listId) => {
+  getCurrBoardCopy() {
     const { currBoard } = this.props;
-    const board = JSON.parse(JSON.stringify(currBoard));
-    const listIdx = board.lists.findIndex(list => list.id === listId);
+    const board = utilService.getCopy(currBoard);
+    return board;
+  }
+
+  getListIdxById(listId) {
+    const { currBoard } = this.props;
+    const listIdx = currBoard.lists.findIndex(list => list.id === listId);
+    return listIdx;
+  }
+
+  getCardIdxById(listId, cardId) {
+    const { currBoard } = this.props;
+    const listIdx = this.getListIdxById(listId);
+    const cardIdx = currBoard.lists[listIdx].cards.findIndex(card => card.id === cardId);
+    return cardIdx;
+  }
+
+  onAddCard = async (newCardTitle, listId) => {
+    const board = this.getCurrBoardCopy();
+    const listIdx = this.getListIdxById(listId);
     const cards = board.lists[listIdx].cards;
     const card = await boardService.getEmptyCard(newCardTitle);
     cards.push(card);
+    this.props.updateCurrBoard({ board });
+  }
+
+  onUpdateListTitle = (listTitle, listId) => {
+    const board = this.getCurrBoardCopy();
+    const listIdx = this.getListIdxById(listId);
+    board.lists[listIdx].title = listTitle;
+    this.props.updateCurrBoard({ board });
+  }
+
+  onRemoveCard = (cardId, listId) => {
+    const board = this.getCurrBoardCopy();
+    const listIdx = this.getListIdxById(listId);
+    const cards = board.lists[listIdx].cards;
+    const cardIdx = this.getCardIdxById(listId, cardId);
+    cards.splice(cardIdx, 1);
     this.props.updateCurrBoard({ board });
   }
 
@@ -36,11 +71,18 @@ class _Board extends Component {
       backgroundImage: `url(${currBoard.style.backgroundImgUrl})`
     } : {};
     return (
-      <div className="app-container" style={style}>
+      <div className="app-container flex f-col" style={style}>
         <BoardHeader board={currBoard} />
         {lists &&
-          <div className="lists-container">
-            {lists.map((list, index) => <ListCmp onAddCard={this.onAddCard} board={currBoard} index={index} key={index} />)}
+          <div className="lists-container flex">
+            {lists.map((list, index) =>
+              <ListCmp
+                onAddCard={this.onAddCard}
+                onUpdateListTitle={this.onUpdateListTitle}
+                onRemoveCard={this.onRemoveCard}
+                board={currBoard}
+                index={index}
+                key={index} />)}
           </div>}
       </div>
     )

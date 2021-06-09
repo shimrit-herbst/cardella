@@ -23,7 +23,6 @@ export function loadBoardAndSetCurrBoard(boardId) {
     }
 }
 
-//CARD//
 export function updateCurrBoard({ board }) {
     return async dispatch => {
         try {

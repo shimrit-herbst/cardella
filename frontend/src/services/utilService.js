@@ -7,6 +7,12 @@ function makeId(length = 5) {
     return txt;
 }
 
+function getCopy(sourceObject) {
+    const copiedObject = JSON.parse(JSON.stringify(sourceObject));
+    return copiedObject;
+}
+
 export const utilService = {
     makeId,
+    getCopy,
 }

@@ -1,6 +1,4 @@
 .app-container {
-    display: flex;
-    flex-direction: column;
     flex: 1;
     background-repeat: no-repeat;
     background-size: cover;
@@ -9,6 +7,5 @@
         padding: 8px 4px;
         max-height: 100%;
         height: calc(100vh - 100px);
-        display: flex;
     }
 }
