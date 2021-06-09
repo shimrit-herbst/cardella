@@ -6,6 +6,11 @@ function ListMenuCmp(props) {
         props.toggleOpenNewCard();
     }
 
+    const toggleOpenListMenuAndRemoveList = () => {
+        props.toggleOpenListMenu();
+        props.onRemoveList();
+    }
+
     return (
         <div className="list-menu flex">
             <div className="list-menu-header flex">
@@ -13,7 +18,7 @@ function ListMenuCmp(props) {
             </div>
             <div className="list-menu-content flex fs14">
                 <ul>
-                    <li>Delete List</li>
+                    <li onClick={toggleOpenListMenuAndRemoveList}>Delete List</li>
                     <li onClick={toggleOpenListMenuAndNewCard}>Add Card</li>
                 </ul>
             </div>

@@ -63,6 +63,13 @@ class _Board extends Component {
     this.props.updateCurrBoard({ board });
   }
 
+  onRemoveList = (listId) => {
+    const board = this.getCurrBoardCopy();
+    const listIdx = this.getListIdxById(listId);
+    board.lists.splice(listIdx, 1)
+    this.props.updateCurrBoard({ board });
+  }
+
   render() {
     const { currBoard } = this.props;
     const lists = currBoard.lists;
@@ -80,9 +87,10 @@ class _Board extends Component {
                 onAddCard={this.onAddCard}
                 onUpdateListTitle={this.onUpdateListTitle}
                 onRemoveCard={this.onRemoveCard}
+                onRemoveList={this.onRemoveList}
                 board={currBoard}
                 index={index}
-                key={index} />)}
+                key={list.id} />)}
           </div>}
       </div>
     )
