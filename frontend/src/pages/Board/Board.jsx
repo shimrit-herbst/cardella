@@ -22,20 +22,19 @@ class _Board extends Component {
   getCurrBoardCopy() {
     const { currBoard } = this.props;
     const board = utilService.getCopy(currBoard);
-    console.log("🚀 ~ file: Board.jsx ~ line 25 ~ _Board ~ getCurrBoardCopy ~ board", board)
     return board;
   }
 
   getListIdxById(listId) {
-    const board = this.getCurrBoardCopy();
-    const listIdx = board.lists.findIndex(list => list.id === listId);
+    const { currBoard } = this.props;
+    const listIdx = currBoard.lists.findIndex(list => list.id === listId);
     return listIdx;
   }
 
   getCardIdxById(listId, cardId) {
-    const board = this.getCurrBoardCopy();
+    const { currBoard } = this.props;
     const listIdx = this.getListIdxById(listId);
-    const cardIdx = board.lists[listIdx].cards.findIndex(card => card.id === cardId);
+    const cardIdx = currBoard.lists[listIdx].cards.findIndex(card => card.id === cardId);
     return cardIdx;
   }
 
