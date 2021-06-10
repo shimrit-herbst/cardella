@@ -42,7 +42,7 @@ function BoardHeader(props) {
                 />
             </div>
             <div className="avatar-board-header flex">
-                {board.members && <Members members={board.members} />}
+                <Members members={board.members} />
             </div>
         </div>
     )

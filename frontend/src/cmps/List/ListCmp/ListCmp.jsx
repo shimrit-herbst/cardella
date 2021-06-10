@@ -80,7 +80,7 @@ function ListCmp(props) {
                     />}
             </div>
             <div className="list-cards">
-                {cards && cards.map(card =>
+                {cards.map(card =>
                     <CardPreview
                         card={card}
                         onRemoveCard={onRemoveCard}
