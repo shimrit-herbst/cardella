@@ -14,14 +14,21 @@
         align-self: center;
 
         .board-title {
+            color: $clr3;
             outline: none;
+            border: none;
             margin-bottom: 0;
             padding: 0 10px 0 3px;
-            border-radius: 4px;
+            background-color: inherit;
 
             &:hover {
                 background-color: $clr4;
                 @include transition();
+                border-radius: 4px;
+            }
+
+            &:focus {
+                background-color: $clr41;
             }
         }
     }

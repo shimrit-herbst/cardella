@@ -70,28 +70,39 @@ class _Board extends Component {
     this.props.updateCurrBoard({ board });
   }
 
+  onUpdateBoardTitle = (boardTitle) => {
+    const board = this.getCurrBoardCopy();
+    board.title = boardTitle;
+    this.props.updateCurrBoard({ board });
+  }
+
   render() {
     const { currBoard } = this.props;
+    if (!currBoard) return <></>;
     const lists = currBoard.lists;
     const style = (currBoard && currBoard.style) ? {
       backgroundColor: currBoard.style.backgroundColor,
       backgroundImage: `url(${currBoard.style.backgroundImgUrl})`
     } : {};
+
     return (
       <div className="app-container flex f-col" style={style}>
-        <BoardHeader board={currBoard} />
-        {lists &&
-          <div className="lists-container flex">
-            {lists.map((list, index) =>
-              <ListCmp
-                onAddCard={this.onAddCard}
-                onUpdateListTitle={this.onUpdateListTitle}
-                onRemoveCard={this.onRemoveCard}
-                onRemoveList={this.onRemoveList}
-                board={currBoard}
-                index={index}
-                key={list.id} />)}
-          </div>}
+        <BoardHeader
+          board={currBoard}
+          onUpdateBoardTitle={this.onUpdateBoardTitle}
+        />
+        <div className="lists-container flex">
+          {lists.map((list, index) =>
+            <ListCmp
+              board={currBoard}
+              index={index}
+              key={list.id}
+              onAddCard={this.onAddCard}
+              onUpdateListTitle={this.onUpdateListTitle}
+              onRemoveCard={this.onRemoveCard}
+              onRemoveList={this.onRemoveList}
+            />)}
+        </div>
       </div>
     )
   }
