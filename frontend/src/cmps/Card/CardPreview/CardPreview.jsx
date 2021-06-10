@@ -4,6 +4,7 @@ import './CardPreview.scss';
 
 function CardPreview(props) {
     const card = props.card;
+
     return (
         <div className="card-preview-container flex f-col" style={{ backgroundColor: card.style.bgColor }}>
             {card.uploadImgUrl && <img src={card.uploadImgUrl} alt="" />}
