@@ -2,11 +2,10 @@ import { Component } from 'react';
 import { connect } from 'react-redux';
 import { boardService } from '../../services/boardService';
 import { utilService } from '../../services/utilService';
-import { updateCurrBoard, loadBoardAndSetCurrBoard } from '../../store/actions/boardActions';
+import { updateCurrBoard, loadBoardAndSetCurrBoard, removeBoard } from '../../store/actions/boardActions';
 import BoardHeader from '../../cmps/Board/BoardHeader';
 import ListCmp from '../../cmps/List/ListCmp/ListCmp';
 import './Board.scss';
-
 class _Board extends Component {
   componentDidMount() {
     const boardId = this.props.match.params.boardId;
@@ -76,6 +75,12 @@ class _Board extends Component {
     this.props.updateCurrBoard({ board });
   }
 
+  onRemoveBoard = () => {
+    const board = this.getCurrBoardCopy();
+    this.props.removeBoard(board._id);
+    this.props.history.push('/');
+  }
+
   render() {
     const { currBoard } = this.props;
     if (!currBoard) return <></>;
@@ -90,6 +95,7 @@ class _Board extends Component {
         <BoardHeader
           board={currBoard}
           onUpdateBoardTitle={this.onUpdateBoardTitle}
+          onRemoveBoard={this.onRemoveBoard}
         />
         <div className="lists-container flex">
           {lists.map((list, index) =>
@@ -116,6 +122,7 @@ function mapStateToProps(state) {
 const mapDispatchToProps = {
   loadBoardAndSetCurrBoard,
   updateCurrBoard,
+  removeBoard,
 }
 
 export const Board = connect(mapStateToProps, mapDispatchToProps)(_Board);

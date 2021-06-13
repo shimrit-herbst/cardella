@@ -8,6 +8,7 @@ export const boardService = {
     getBoardById,
     updateBoard,
     getEmptyCard,
+    removeBoard,
 }
 
 function getBoards(filterBy = {}) {
@@ -27,6 +28,10 @@ function getBoardById(boardId) {
 
 function updateBoard(board) {
     return HttpService.put(`${PATH_PREFIX}/${board._id}`, board);
+}
+
+function removeBoard(boardId) {
+    return HttpService.delete(`${PATH_PREFIX}/${boardId}`);
 }
 
 function getEmptyCard(title = '') {
