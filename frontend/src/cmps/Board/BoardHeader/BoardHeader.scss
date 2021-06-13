@@ -1,7 +1,7 @@
 @import '../../../styles/styles.scss';
 
 .board-header {
-    background-color: ($clr1, 0.26);
+    background-color: rgba($clr1, 0.26);
     height: rem(50px);
     color: $clr3;
     grid-template-columns: repeat(3, 1fr);
@@ -17,6 +17,7 @@
             color: $clr3;
             outline: none;
             border: none;
+            width: 100%;
             margin-bottom: 0;
             padding: 0 10px 0 3px;
             background-color: inherit;
@@ -28,7 +29,7 @@
             }
 
             &:focus {
-                background-color: ($clr4, 0.376);
+                background-color: rgba($clr4, 0.376);
             }
         }
     }
@@ -57,13 +58,13 @@
             width: rem(32px);
             color: $clr3;
             font-weight: 600;
-            background-color: ($clr4, 0.239);
+            background-color: rgba($clr4, 0.239);
             border-radius: rem(4px);
             margin: rem(3px);
             padding: rem(5px);
 
             &:hover {
-                background-color: ($clr4, 0.377);
+                background-color: rgba($clr4, 0.377);
                 @include transition();
             }
         }

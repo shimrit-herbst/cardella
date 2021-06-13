@@ -77,11 +77,26 @@ class _Board extends Component {
 
   onRemoveBoard = () => {
     const { currBoard } = this.props;
+    // TODO - Issue #20
     if (currBoard._id === '5fca2d38e4167fe6dfcfbec5') return console.log('Public board cannot be removed!');
     else {
       this.props.removeBoard(currBoard._id);
       this.props.history.push('/');
     }
+  }
+
+  onSetBackgroundImg = (imgUrl) => {
+    const board = this.getCurrBoardCopy();
+    board.style.backgroundImgUrl = imgUrl;
+    board.style.backgroundColor = "";
+    this.props.updateCurrBoard({ board });
+  }
+
+  onSetBgc = (color) => {
+    const board = this.getCurrBoardCopy();
+    board.style.backgroundColor = color;
+    board.style.backgroundImgUrl = "";
+    this.props.updateCurrBoard({ board });
   }
 
   render() {
@@ -99,6 +114,8 @@ class _Board extends Component {
           board={currBoard}
           onUpdateBoardTitle={this.onUpdateBoardTitle}
           onRemoveBoard={this.onRemoveBoard}
+          onSetBackgroundImg={this.onSetBackgroundImg}
+          onSetBgc={this.onSetBgc}
         />
         <div className="lists-container flex">
           {lists.map((list, index) =>
