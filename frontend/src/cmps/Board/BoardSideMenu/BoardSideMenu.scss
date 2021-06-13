@@ -1,0 +1,58 @@
+@import '../../../styles/styles.scss';
+
+.side-menu {
+    width: rem(305px);
+    position: fixed;
+    top: 40px;
+    right: 0;
+    height: calc(100vh);
+    @include menu;
+
+    .side-menu-header {
+        justify-content: space-between;
+        align-items: center;
+        margin: 0 rem(14px) 0 rem(12px);
+        border-bottom: 1px solid $clr8;
+        font-weight: 600;
+
+        h3 {
+            line-height: rem(20px);
+            margin: rem(14px) auto;
+            font-size: rem(16.8px);
+            font-weight: inherit;
+        }
+
+        .side-menu-close-btn {
+            cursor: pointer;
+
+            &:hover {
+                background-color: ($clr5, 0.109);
+                @include transition;
+            }
+        }
+    }
+
+    .side-menu-nav {
+        padding: rem(12px) 0;
+        margin: 0 rem(6px) 0 rem(12px);
+        border-bottom: 1px solid $clr8;
+
+        button {
+            text-align: left;
+            margin-bottom: rem(12px);
+            line-height: rem(20px);
+            cursor: pointer;
+            padding: rem(3px);
+
+            &:hover {
+                border-radius: rem(3px);
+                background-color: ($clr5, 0.109);
+                @include transition;
+            }
+        }
+
+        .icon {
+            margin-right: rem(5px);
+        }
+    }
+}

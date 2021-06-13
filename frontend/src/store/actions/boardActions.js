@@ -33,3 +33,14 @@ export function updateCurrBoard({ board }) {
         }
     }
 }
+
+export function removeBoard(boardId) {
+    return async dispatch => {
+        try {
+            dispatch({ type: "REMOVE_BOARD", boardId });
+            await boardService.removeBoard(boardId);
+        } catch (err) {
+            console.log('ERROR!', err);
+        }
+    }
+}

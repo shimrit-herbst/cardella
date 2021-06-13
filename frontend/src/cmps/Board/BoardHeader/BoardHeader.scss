@@ -1,7 +1,7 @@
 @import '../../../styles/styles.scss';
 
 .board-header {
-    background-color: ($clr1, 0.259);
+    background-color: ($clr1, 0.26);
     height: rem(50px);
     color: $clr3;
     grid-template-columns: repeat(3, 1fr);
@@ -28,7 +28,7 @@
             }
 
             &:focus {
-                background-color: $clr41;
+                background-color: ($clr4, 0.376);
             }
         }
     }
@@ -44,6 +44,28 @@
 
         .avatar {
             margin: rem(1px);
+        }
+    }
+
+    .right-board-header {
+        grid-area: rightBoardHeader;
+        justify-content: flex-end;
+        align-self: center;
+        margin-right: rem(8px);
+
+        .menu-btn {
+            width: rem(32px);
+            color: $clr3;
+            font-weight: 600;
+            background-color: ($clr4, 0.239);
+            border-radius: rem(4px);
+            margin: rem(3px);
+            padding: rem(5px);
+
+            &:hover {
+                background-color: ($clr4, 0.377);
+                @include transition();
+            }
         }
     }
 }
