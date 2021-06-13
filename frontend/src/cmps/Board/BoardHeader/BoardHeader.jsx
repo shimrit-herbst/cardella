@@ -64,7 +64,8 @@ function BoardHeader(props) {
                     <BoardSideMenu
                         board={board}
                         toggleSideMenu={toggleSideMenu}
-                        onRemoveBoard={onRemoveBoard} />}
+                        onRemoveBoard={onRemoveBoard}
+                    />}
             </div>
         </div>
     )

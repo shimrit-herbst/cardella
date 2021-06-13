@@ -76,9 +76,12 @@ class _Board extends Component {
   }
 
   onRemoveBoard = () => {
-    const board = this.getCurrBoardCopy();
-    this.props.removeBoard(board._id);
-    this.props.history.push('/');
+    const { currBoard } = this.props;
+    if (currBoard._id === '5fca2d38e4167fe6dfcfbec5') return console.log('Public board cannot be removed!');
+    else {
+      this.props.removeBoard(currBoard._id);
+      this.props.history.push('/');
+    }
   }
 
   render() {

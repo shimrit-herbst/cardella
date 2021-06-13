@@ -5,10 +5,10 @@ import { faTrashAlt } from '@fortawesome/fontawesome-free-regular';
 import './BoardSideMenu.scss';
 
 function BoardSideMenu(props) {
-    const [isOpen, setIsOpen] = useState(false);
+    const [isOpenChangeBgcMenu, setIsOpenChangeBgcMenu] = useState(false);
 
     const toggleChangeBgcMenu = () => {
-        setIsOpen(!isOpen);
+        setIsOpenChangeBgcMenu(!isOpenChangeBgcMenu);
     }
 
     return (
