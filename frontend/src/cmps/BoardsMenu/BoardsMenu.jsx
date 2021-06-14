@@ -51,7 +51,6 @@ function mapStateToProps(state) {
     return {
         boards: state.boardReducer.boards,
         board: state.boardReducer.currBoard
-
     }
 }
 

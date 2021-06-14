@@ -13,8 +13,8 @@ function BoardSideMenu(props) {
 
     const toggleChangeBgcMenu = () => {
         setIsBackgroundMenuOpen(!isBackgroundMenuOpen);
-        setIsColorPickerOpen({ isOpenColorPicker: false });
-        setIsImgPickerOpen({ isOpenImgPicker: false });
+        setIsColorPickerOpen(false);
+        setIsImgPickerOpen(false);
     }
 
     const toggleImgPicker = () => {
@@ -47,14 +47,14 @@ function BoardSideMenu(props) {
                 </button>
                 <button className="clr-btn fs16" onClick={toggleChangeBgcMenu}>
                     <FontAwesomeIcon icon={faPalette} className="icon" /> Change Background
-            </button>
+                </button>
 
                 {isBackgroundMenuOpen &&
                     <div className="background-change flex">
-                        {!isColorPickerOpen ?
+                        {isColorPickerOpen ?
                             <ColorPicker onSetBgc={onSetBgc} />
                             :
-                            <div>
+                            <div style={isImgPickerOpen ? { 'display': 'none' } : {}}>
                                 <img
                                     onClick={toggleColorPicker}
                                     src="https://res.cloudinary.com/morshva/image/upload/v1607417101/colors_jnbhzi.png" alt=""
@@ -62,10 +62,10 @@ function BoardSideMenu(props) {
                                 <h5 className="fs-16">Colors</h5>
                             </div>
                         }
-                        {!isImgPickerOpen ?
+                        {isImgPickerOpen ?
                             <ImagePicker onSetBackgroundImg={onSetBackgroundImg} />
                             :
-                            <div>
+                            <div style={isColorPickerOpen ? { 'display': 'none' } : {}}>
                                 <img
                                     onClick={toggleImgPicker}
                                     src="https://res.cloudinary.com/morshva/image/upload/v1607417104/pictures_ksbogz.png" alt=""

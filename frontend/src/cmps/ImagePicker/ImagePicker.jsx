@@ -18,17 +18,15 @@ function ImagePicker(props) {
 
     return (
         <div className="image-picker flex">
-            {imgUrls.map((imgUrl, index) =>
+            {imgUrls.map((imgUrl) =>
                 <img
                     className="image-square"
                     src={imgUrl}
                     onClick={() => selectImage(imgUrl)}
-                    index={index}
-                    key={index}
+                    key={imgUrl}
                     alt=""
                 />
-            )
-            }
+            )}
         </div >
     )
 }

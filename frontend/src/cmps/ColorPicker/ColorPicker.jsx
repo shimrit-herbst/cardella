@@ -18,16 +18,14 @@ function ColorPicker(props) {
 
     return (
         <div className="color-picker flex">
-            {colors.map((color, index) =>
+            {colors.map((color) =>
                 <div
                     className="color-square"
                     style={{ backgroundColor: color }}
                     onClick={() => selectColor(color)}
-                    index={index}
-                    key={index}
+                    key={color}
                 ></div>
-            )
-            }
+            )}
         </div >
     )
 }
