@@ -1,0 +1,11 @@
+.color-picker {
+    flex-wrap: wrap;
+    gap: 10px;
+    justify-content: center;
+
+    .color-square {
+        width: 120px;
+        height: 90px;
+        cursor: pointer;
+    }
+}

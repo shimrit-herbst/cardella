@@ -1,0 +1,10 @@
+.image-picker {
+    flex-wrap: wrap;
+    gap: 10px;
+    justify-content: center;
+
+    .image-square {
+        width: 120px;
+        height: 90px;
+    }
+}

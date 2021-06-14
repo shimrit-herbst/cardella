@@ -24,9 +24,11 @@
 
         .side-menu-close-btn {
             cursor: pointer;
+            padding: 7px;
+            border-radius: 4px;
 
             &:hover {
-                background-color: ($clr5, 0.109);
+                background-color: rgba($clr5, 0.109);
                 @include transition;
             }
         }
@@ -46,13 +48,32 @@
 
             &:hover {
                 border-radius: rem(3px);
-                background-color: ($clr5, 0.109);
+                background-color: rgba($clr5, 0.109);
                 @include transition;
             }
         }
 
         .icon {
             margin-right: rem(5px);
+        }
+    }
+
+    .background-change {
+        justify-content: space-evenly;
+        margin-block-start: rem(5px);
+
+        img {
+            border-radius: rem(5px);
+            width: rem(120px);
+            height: rem(90px);
+            cursor: pointer;
+        }
+
+        h5 {
+            text-align: center;
+            padding: rem(6px);
+            line-height: rem(20px);
+            cursor: pointer;
         }
     }
 }

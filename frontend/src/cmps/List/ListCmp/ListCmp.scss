@@ -70,7 +70,7 @@
             background-color: $clr5;
 
             &:hover {
-                background-color: ($clr5, 0.275);
+                background-color: rgba($clr5, 0.275);
             }
         }
 

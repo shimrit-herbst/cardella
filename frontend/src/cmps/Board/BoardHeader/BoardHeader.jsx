@@ -8,7 +8,7 @@ import './BoardHeader.scss';
 function BoardHeader(props) {
     const board = props.board;
     const [boardTitle, setBoardTitle] = useState(board.title);
-    const [isOpen, setIsOpen] = useState(false);
+    const [isSideMenuOpen, setIsSideMenuOpen] = useState(false);
 
     const onChangeHandler = (ev) => {
         const value = ev.target.value;
@@ -34,11 +34,21 @@ function BoardHeader(props) {
     }
 
     const toggleSideMenu = () => {
-        setIsOpen(!isOpen);
+        setIsSideMenuOpen(!isSideMenuOpen);
     }
 
     const onRemoveBoard = () => {
         props.onRemoveBoard();
+    }
+
+    const onSetBackgroundImg = (imgUrl) => {
+        props.onSetBackgroundImg(imgUrl);
+        toggleSideMenu();
+    }
+
+    const onSetBgc = (color) => {
+        props.onSetBgc(color);
+        toggleSideMenu();
     }
 
     return (
@@ -60,11 +70,13 @@ function BoardHeader(props) {
                 <button className="menu-btn clr-btn" onClick={toggleSideMenu}>
                     <FontAwesomeIcon className="fs16" icon={faBars} />
                 </button>
-                {isOpen &&
+                {isSideMenuOpen &&
                     <BoardSideMenu
                         board={board}
                         toggleSideMenu={toggleSideMenu}
                         onRemoveBoard={onRemoveBoard}
+                        onSetBackgroundImg={onSetBackgroundImg}
+                        onSetBgc={onSetBgc}
                     />}
             </div>
         </div>
