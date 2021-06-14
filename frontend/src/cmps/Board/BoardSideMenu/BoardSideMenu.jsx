@@ -54,24 +54,28 @@ function BoardSideMenu(props) {
                         {isColorPickerOpen ?
                             <ColorPicker onSetBgc={onSetBgc} />
                             :
-                            <div style={isImgPickerOpen ? { 'display': 'none' } : {}}>
-                                <img
-                                    onClick={toggleColorPicker}
-                                    src="https://res.cloudinary.com/morshva/image/upload/v1607417101/colors_jnbhzi.png" alt=""
-                                />
-                                <h5 className="fs-16">Colors</h5>
-                            </div>
+                            !isImgPickerOpen && (
+                                <div>
+                                    <img
+                                        onClick={toggleColorPicker}
+                                        src="https://res.cloudinary.com/morshva/image/upload/v1607417101/colors_jnbhzi.png" alt=""
+                                    />
+                                    <h5 className="fs-16">Colors</h5>
+                                </div>
+                            )
                         }
                         {isImgPickerOpen ?
                             <ImagePicker onSetBackgroundImg={onSetBackgroundImg} />
                             :
-                            <div style={isColorPickerOpen ? { 'display': 'none' } : {}}>
-                                <img
-                                    onClick={toggleImgPicker}
-                                    src="https://res.cloudinary.com/morshva/image/upload/v1607417104/pictures_ksbogz.png" alt=""
-                                />
-                                <h5 className="fs-16">Photos</h5>
-                            </div>
+                            !isColorPickerOpen && (
+                                <div>
+                                    <img
+                                        onClick={toggleImgPicker}
+                                        src="https://res.cloudinary.com/morshva/image/upload/v1607417104/pictures_ksbogz.png" alt=""
+                                    />
+                                    <h5 className="fs-16">Photos</h5>
+                                </div>
+                            )
                         }
                     </div>
                 }
