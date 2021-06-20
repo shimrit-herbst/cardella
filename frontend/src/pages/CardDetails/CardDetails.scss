@@ -1,0 +1,67 @@
+@import '../../styles/styles.scss';
+
+.card-details-container {
+    -webkit-tap-highlight-color: rgba($clr4, 0);
+    user-select: none;
+    margin: 48px 0 80px;
+    width: rem(850px);
+    color: $clr2;
+    height: rem(900px);
+    overflow-x: hidden;
+    overflow-y: auto;
+    @include scrollbar1;
+    max-height: 86vh;
+    border-radius: rem(8px);
+    background-color: $clr9;
+    z-index: 100;
+    padding: rem(30px);
+
+    .main-area {
+        flex-basis: 90%;
+        margin-left: rem(18px);
+
+        .card-details-title {
+            align-items: center;
+            margin-bottom: rem(5px);
+            font-weight: 600;
+
+            .icon {
+                width: rem(30px);
+            }
+
+            .contenteditable-title {
+                align-items: center;
+                height: rem(72px);
+                font-weight: 600;
+                margin-bottom: 0;
+                margin-left: 5px;
+                width: 80%;
+                background-color: inherit;
+                border: none;
+
+                &:hover {
+                    @include transition;
+                    background-color: $clr3;
+                }
+
+                &:focus {
+                    border: 2px solid $clr1;
+                    border-radius: 3px;
+                }
+            }
+        }
+
+        .card-details-in-list {
+            margin-bottom: rem(20px);
+
+            :first-child {
+                margin-left: rem(38px);
+            }
+
+            :nth-child(2) {
+                text-decoration: underline;
+                margin-left: rem(5px);
+            }
+        }
+    }
+}

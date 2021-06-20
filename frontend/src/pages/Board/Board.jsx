@@ -1,12 +1,18 @@
 import { Component } from 'react';
+import { Route } from 'react-router-dom';
 import { connect } from 'react-redux';
 import { boardService } from '../../services/boardService';
 import { utilService } from '../../services/utilService';
 import { updateCurrBoard, loadBoardAndSetCurrBoard, removeBoard } from '../../store/actions/boardActions';
 import BoardHeader from '../../cmps/Board/BoardHeader';
 import ListCmp from '../../cmps/List/ListCmp/ListCmp';
+import CardDetails from '../../pages/CardDetails/CardDetails';
 import './Board.scss';
 class _Board extends Component {
+  state = {
+    showCardModal: false,
+  }
+
   componentDidMount() {
     const boardId = this.props.match.params.boardId;
     this.props.loadBoardAndSetCurrBoard(boardId);
@@ -99,6 +105,26 @@ class _Board extends Component {
     this.props.updateCurrBoard({ board });
   }
 
+  toggleShowCardModal = () => {
+    this.setState(prevState =>
+      ({ ...prevState, showCardModal: !prevState.showCardModal }));
+  }
+
+  getListTitleByListId = (listId) => {
+    const { currBoard } = this.props;
+    const listIdx = this.getListIdxById(listId);
+    const list = currBoard.lists[listIdx];
+    return list.title;
+  }
+
+  getCardByCardId = (listId, cardId) => {
+    const { currBoard } = this.props;
+    const listIdx = this.getListIdxById(listId);
+    const cardIdx = this.getCardIdxById(listId, cardId);
+    const card = currBoard.lists[listIdx].cards[cardIdx];
+    return card;
+  }
+
   render() {
     const { currBoard } = this.props;
     if (!currBoard) return <></>;
@@ -127,8 +153,23 @@ class _Board extends Component {
               onUpdateListTitle={this.onUpdateListTitle}
               onRemoveCard={this.onRemoveCard}
               onRemoveList={this.onRemoveList}
+              toggleShowCardModal={this.toggleShowCardModal}
             />)}
         </div>
+        {this.state.showCardModal &&
+          <div className="modal-route">
+            <div className="modal-content flex f-center">
+              <Route
+                path="/boards/:boardId/list/:listId/card/:cardId"
+                render={props => <CardDetails
+                  {...props}
+                  getListTitleByListId={this.getListTitleByListId}
+                  getCardByCardId={this.getCardByCardId}
+                />}
+              />
+            </div>
+          </div>
+        }
       </div>
     )
   }

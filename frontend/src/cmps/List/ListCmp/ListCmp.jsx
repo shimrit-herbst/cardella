@@ -57,7 +57,6 @@ function ListCmp(props) {
         props.onRemoveList(list.id);
     }
 
-
     return (
         <div className="list-container flex f-col">
             <div className="list-header flex f-center">
@@ -83,16 +82,18 @@ function ListCmp(props) {
                 {cards.map(card =>
                     <CardPreview
                         card={card}
+                        listId={list.id}
                         onRemoveCard={onRemoveCard}
+                        toggleShowCardModal={props.toggleShowCardModal}
                         key={card.id}
-                    />)}
+                    />
+                )}
             </div>
             <AddNewCard
                 toggleOpenNewCard={toggleOpenNewCard}
                 isNewCard={isNewCard}
                 onAddCard={onAddCard}
             />
-
         </div >
     )
 }
