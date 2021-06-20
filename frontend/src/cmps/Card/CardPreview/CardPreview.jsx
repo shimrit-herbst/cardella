@@ -8,11 +8,11 @@ function CardPreview(props) {
     const history = useHistory();
 
     return (
-        <Link to={`${history.location.pathname}/list/${props.list.id}/card/${card.id}`}>
+        <Link to={`${history.location.pathname}/list/${props.listId}/card/${card.id}`}>
             <div
                 className="card-preview-container flex f-col"
                 style={{ backgroundColor: card.style.bgColor }}
-                onClick={props.toggleShowModal}
+                onClick={props.toggleShowCardModal}
             >
                 {card.uploadImgUrl && <img src={card.uploadImgUrl} alt="" />}
                 <div className="card-content flex fs-14">

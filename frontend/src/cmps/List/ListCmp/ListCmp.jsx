@@ -82,9 +82,9 @@ function ListCmp(props) {
                 {cards.map(card =>
                     <CardPreview
                         card={card}
-                        list={list}
+                        listId={list.id}
                         onRemoveCard={onRemoveCard}
-                        toggleShowModal={props.toggleShowModal}
+                        toggleShowCardModal={props.toggleShowCardModal}
                         key={card.id}
                     />
                 )}

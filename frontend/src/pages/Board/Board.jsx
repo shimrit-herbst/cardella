@@ -10,7 +10,7 @@ import CardDetails from '../../pages/CardDetails/CardDetails';
 import './Board.scss';
 class _Board extends Component {
   state = {
-    showModal: false,
+    showCardModal: false,
   }
 
   componentDidMount() {
@@ -105,10 +105,24 @@ class _Board extends Component {
     this.props.updateCurrBoard({ board });
   }
 
-  toggleShowModal = () => {
+  toggleShowCardModal = () => {
     this.setState(prevState =>
-      ({ ...prevState, showModal: !prevState.showModal }),
-      () => { console.log('showmodal', this.state.showModal) });
+      ({ ...prevState, showCardModal: !prevState.showCardModal }));
+  }
+
+  getListTitleByListId = (listId) => {
+    const { currBoard } = this.props;
+    const listIdx = this.getListIdxById(listId);
+    const list = currBoard.lists[listIdx];
+    return list.title;
+  }
+
+  getCardByCardId = (listId, cardId) => {
+    const { currBoard } = this.props;
+    const listIdx = this.getListIdxById(listId);
+    const cardIdx = this.getCardIdxById(listId, cardId);
+    const card = currBoard.lists[listIdx].cards[cardIdx];
+    return card;
   }
 
   render() {
@@ -139,15 +153,18 @@ class _Board extends Component {
               onUpdateListTitle={this.onUpdateListTitle}
               onRemoveCard={this.onRemoveCard}
               onRemoveList={this.onRemoveList}
-              toggleShowModal={this.toggleShowModal}
+              toggleShowCardModal={this.toggleShowCardModal}
             />)}
         </div>
-        {this.state.showModal &&
+        {this.state.showCardModal &&
           <div className="modal-route">
             <div className="modal-content flex f-center">
               <Route
                 path="/boards/:boardId/list/:listId/card/:cardId"
-                render={props => <CardDetails {...props} board={currBoard}
+                render={props => <CardDetails
+                  {...props}
+                  getListTitleByListId={this.getListTitleByListId}
+                  getCardByCardId={this.getCardByCardId}
                 />
                 }
               />

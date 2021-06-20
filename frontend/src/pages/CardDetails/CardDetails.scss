@@ -12,7 +12,7 @@
     @include scrollbar1;
     max-height: 86vh;
     border-radius: rem(8px);
-    background-color: #f3f3f3;
+    background-color: #ebecf0;
     z-index: 100;
     padding: rem(30px);
 
@@ -24,8 +24,6 @@
             align-items: center;
             margin-bottom: rem(5px);
             font-weight: 600;
-            background-color: inherit;
-            border: none;
 
             .icon {
                 width: rem(30px);
@@ -37,10 +35,18 @@
                 font-weight: 600;
                 margin-bottom: 0;
                 margin-left: 5px;
+                width: 80%;
+                background-color: inherit;
+                border: none;
 
                 &:hover {
                     @include transition;
-                    background-color: rgb(219, 219, 219);
+                    background-color: $clr3;
+                }
+
+                &:focus {
+                    border: 2px solid $clr1;
+                    border-radius: 3px;
                 }
             }
         }
