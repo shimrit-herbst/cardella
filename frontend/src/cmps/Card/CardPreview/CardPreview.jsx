@@ -1,6 +1,7 @@
 import { Link, useHistory } from 'react-router-dom';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import { faTrashAlt } from '@fortawesome/fontawesome-free-regular';
+import CardPreviewLabels from '../CardPreviewLabels/CardPreviewLabels';
 import './CardPreview.scss';
 
 function CardPreview(props) {
@@ -15,7 +16,13 @@ function CardPreview(props) {
                 onClick={props.toggleShowCardModal}
             >
                 {card.uploadImgUrl && <img src={card.uploadImgUrl} alt="" />}
-                <div className="card-content flex fs-14">
+                <div className="card-content fs-14">
+                    {card.labels &&
+                        <CardPreviewLabels
+                            className="card-top-labels"
+                            labels={card.labels}
+                        />
+                    }
                     <div className="card-title-delete flex">
                         <p className="card-title">{card.title}</p>
                         <FontAwesomeIcon
