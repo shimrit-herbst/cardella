@@ -64,4 +64,14 @@
             }
         }
     }
+
+    .card-details-buttons-area {
+        margin-right: rem(18px);
+        width: rem(180px);
+
+        .close-card-details {
+            justify-content: flex-end;
+            margin-bottom: rem(20px);
+        }
+    }
 }

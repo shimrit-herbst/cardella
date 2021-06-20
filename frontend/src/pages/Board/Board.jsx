@@ -163,8 +163,10 @@ class _Board extends Component {
                 path="/boards/:boardId/list/:listId/card/:cardId"
                 render={props => <CardDetails
                   {...props}
+                  boardId={currBoard._id}
                   getListTitleByListId={this.getListTitleByListId}
                   getCardByCardId={this.getCardByCardId}
+                  toggleShowCardModal={this.toggleShowCardModal}
                 />}
               />
             </div>
