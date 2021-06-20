@@ -1,5 +1,6 @@
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
-import { faTicketAlt } from '@fortawesome/fontawesome-free-solid';
+import { faTicketAlt, faTimes } from '@fortawesome/fontawesome-free-solid';
+import CardPreviewLabels from '../../cmps/Card/CardPreviewLabels/CardPreviewLabels';
 import './CardDetails.scss';
 
 function CardDetails(props) {
@@ -7,6 +8,12 @@ function CardDetails(props) {
     const cardId = props.match.params.cardId;
     const listTitle = props.getListTitleByListId(listId);
     const card = props.getCardByCardId(listId, cardId);
+
+    const onCloseCardModal = (ev) => {
+        ev.stopPropagation();
+        props.toggleShowCardModal();
+        props.history.push('/boards/' + props.boardId);
+    }
 
     return (
         <div className="card-details-container flex">
@@ -23,6 +30,17 @@ function CardDetails(props) {
                     <h5>in list:</h5>
                     <h5>{listTitle}</h5>
                 </div>
+                {card.labels &&
+                    <CardPreviewLabels
+                        className="card-preview-labels"
+                        labels={card.labels}
+                    />
+                }
+            </div>
+            <div className="card-details-buttons-area flex f-col">
+                <button className="close-card-details flex fs25 clr-btn" onClick={onCloseCardModal}>
+                    <FontAwesomeIcon className="icon" icon={faTimes} />
+                </button>
             </div>
         </div>
     )
