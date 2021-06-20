@@ -165,8 +165,7 @@ class _Board extends Component {
                   {...props}
                   getListTitleByListId={this.getListTitleByListId}
                   getCardByCardId={this.getCardByCardId}
-                />
-                }
+                />}
               />
             </div>
           </div>
