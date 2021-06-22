@@ -1,4 +1,5 @@
 import Avatar from 'react-avatar';
+import './Members.scss';
 
 function Members({ members }) {
     return (
