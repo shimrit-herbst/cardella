@@ -63,6 +63,34 @@
                 margin-left: rem(5px);
             }
         }
+
+        .card-details-labels {
+            margin-bottom: rem(20px);
+            margin-left: rem(38px);
+        }
+
+        .members-dueDate-container {
+            flex-wrap: wrap;
+            margin-bottom: rem(20px);
+            margin-left: rem(38px);
+
+            h5 {
+                line-height: rem(30px);
+            }
+
+            .members-container {
+                justify-content: space-between;
+                height: rem(76px);
+
+                .avatar-list {
+                    margin: 0px;
+
+                    .avatar {
+                        padding: 1px 1px 6px;
+                    }
+                }
+            }
+        }
     }
 
     .card-details-buttons-area {

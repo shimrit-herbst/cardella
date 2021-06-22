@@ -2,6 +2,7 @@ import { Link, useHistory } from 'react-router-dom';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import { faTrashAlt } from '@fortawesome/fontawesome-free-regular';
 import CardPreviewLabels from '../CardPreviewLabels/CardPreviewLabels';
+import Members from '../../Members/Members';
 import './CardPreview.scss';
 
 function CardPreview(props) {
@@ -29,6 +30,11 @@ function CardPreview(props) {
                             icon={faTrashAlt}
                             onClick={() => props.onRemoveCard(card.id)}
                         />
+                    </div>
+                    <div className="card-bottom flex">
+                        <div className="card-bottom-left">
+                            {card.members && <Members members={card.members} />}
+                        </div>
                     </div>
                 </div>
             </div>
