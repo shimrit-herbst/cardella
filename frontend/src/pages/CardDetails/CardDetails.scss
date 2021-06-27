@@ -41,7 +41,7 @@
 
                 &:hover {
                     @include transition;
-                    background-color: $clr3;
+                    background-color: $clr10;
                 }
 
                 &:focus {
@@ -69,14 +69,30 @@
             margin-left: rem(38px);
         }
 
-        .members-dueDate-container {
+        .members-due-date-container {
             flex-wrap: wrap;
             margin-bottom: rem(20px);
             margin-left: rem(38px);
 
+            .members-due-date-title {
+                font-weight: bold;
+            }
+
+            .due-date-container {
+                margin-right: rem(20px);
+                height: rem(76px);
+            }
+
             h5 {
                 line-height: rem(30px);
+                font-size: rem(17px);
+
+                .due-date-container {
+                    margin-right: rem(20px);
+                    height: 76px;
+                }
             }
+
 
             .members-container {
                 justify-content: space-between;
@@ -87,6 +103,72 @@
 
                     .avatar {
                         padding: 1px 1px 6px;
+                    }
+                }
+            }
+        }
+
+        .card-details-desc {
+            margin-bottom: rem(15px);
+
+            textarea {
+                width: 90%;
+                min-height: 50px;
+                border: none;
+                resize: none;
+                margin-left: rem(38px);
+                padding: 10px;
+                background-color: $clr3;
+                font-family: sans-serif;
+                border-radius: rem(5px);
+
+                &:hover {
+                    @include transition;
+                    background-color: $clr10;
+                }
+
+                &:focus {
+                    min-height: rem(150px);
+                }
+            }
+        }
+
+        .card-details-img {
+            margin-bottom: rem(15px);
+
+            .img-delete-container {
+                align-items: flex-start;
+
+                .uploaded-img {
+                    width: 60%;
+                    min-height: 50%;
+                    margin-left: rem(38px);
+                    margin-right: rem(10px);
+                    cursor: pointer;
+                }
+
+                h5 {
+                    margin-bottom: 0;
+                    border-radius: 4px;
+                    color: transparent;
+                    cursor: pointer;
+                    position: relative;
+                    right: 45px;
+                    top: 5px;
+
+                    .icon {
+                        padding: 5px;
+                        border-radius: 3px;
+                        width: auto;
+                    }
+                }
+
+                &:hover {
+
+                    h5 {
+                        color: $clr1;
+                        background-color: rgba(211, 211, 211, 0.63);
+                        @include transition;
                     }
                 }
             }
@@ -102,4 +184,6 @@
             margin-bottom: rem(20px);
         }
     }
+
+
 }
