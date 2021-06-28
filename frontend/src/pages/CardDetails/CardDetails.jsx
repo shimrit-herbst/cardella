@@ -104,9 +104,7 @@ function CardDetails(props) {
                     </div>
                 }
                 {card.checklists &&
-                    <CheckLists
-                        checklists={card.checklists}
-                    />
+                    <CheckLists checklists={card.checklists} />
                 }
             </div>
 
