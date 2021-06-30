@@ -21,7 +21,7 @@ function CardCheckList(props) {
                         {checklist.todos.map(todo =>
                             <li className="flex fs16" key={todo.id}>
                                 <button className="checklist-btn-remove-todo">
-                                    <FontAwesomeIcon className="icon" icon={faTimes} />
+                                    <FontAwesomeIcon className="icon fs15" icon={faTimes} />
                                 </button>
                                 <label className="flex" style={{ "textDecoration": todo.isDone ? "line-through" : "none" }}>
                                     <input

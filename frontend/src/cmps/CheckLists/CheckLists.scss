@@ -1,0 +1,28 @@
+@import '../../styles/styles.scss';
+
+.checklists {
+    cursor: pointer;
+    -webkit-tap-highlight-color: $clr4;
+
+    .check-list-li {
+
+        .delete-btn {
+
+            h5 {
+                margin-bottom: 0;
+                border-radius: 3px;
+                color: transparent;
+                padding: rem(5px);
+            }
+        }
+
+        &:hover:first-child {
+
+            h5 {
+                background-color: rgba(9, 30, 66, 0.04);
+                @include transition;
+                color: $clr1;
+            }
+        }
+    }
+}

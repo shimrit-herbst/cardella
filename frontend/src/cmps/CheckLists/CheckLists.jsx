@@ -1,4 +1,5 @@
 import CardCheckList from "../Card/CardCheckList/CardCheckList";
+import './CheckLists.scss';
 
 function CheckLists(props) {
     const checklists = props.checklists;
@@ -10,7 +11,7 @@ function CheckLists(props) {
                     <li className="check-list-li flex" key={checklist.id}>
                         <CardCheckList checklist={checklist} />
                         <button className="delete-btn clr-btn">
-                            <h5>Delete</h5>
+                            <h5 className="fs16">Delete</h5>
                         </button>
                     </li>
                 )}
