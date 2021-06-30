@@ -59,6 +59,22 @@ class _Board extends Component {
     this.props.updateCurrBoard({ board });
   }
 
+  onUpdateCardTitle = (cardTitle, cardId, listId) => {
+    const board = this.getCurrBoardCopy();
+    const listIdx = this.getListIdxById(listId);
+    const cardIdx = this.getCardIdxById(listId, cardId);
+    board.lists[listIdx].cards[cardIdx].title = cardTitle;
+    this.props.updateCurrBoard({ board });
+  }
+
+  onUpdateCardDescription = (cardDescription, cardId, listId) => {
+    const board = this.getCurrBoardCopy();
+    const listIdx = this.getListIdxById(listId);
+    const cardIdx = this.getCardIdxById(listId, cardId);
+    board.lists[listIdx].cards[cardIdx].description = cardDescription;
+    this.props.updateCurrBoard({ board });
+  }
+
   onRemoveCard = (cardId, listId) => {
     const board = this.getCurrBoardCopy();
     const listIdx = this.getListIdxById(listId);
@@ -167,6 +183,8 @@ class _Board extends Component {
                   getListTitleByListId={this.getListTitleByListId}
                   getCardByCardId={this.getCardByCardId}
                   toggleShowCardModal={this.toggleShowCardModal}
+                  onUpdateCardTitle={this.onUpdateCardTitle}
+                  onUpdateCardDescription={this.onUpdateCardDescription}
                 />}
               />
             </div>
