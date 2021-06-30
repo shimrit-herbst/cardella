@@ -41,7 +41,7 @@ function CardDetails(props) {
         else if (field === 'description') setCardDescription(value);
     }
 
-    const handleKeypress = (ev) => {
+    const handleTitleKeypress = (ev) => {
         if (ev.key === "Enter") {
             ev.target.blur();
         }
@@ -78,7 +78,7 @@ function CardDetails(props) {
                         name="title"
                         value={cardTitle}
                         onChange={onChangeHandler}
-                        onKeyUp={handleKeypress}
+                        onKeyUp={handleTitleKeypress}
                         onBlur={onUpdateCardTitle}
                         className="contenteditable-title flex fs23"
                     />
