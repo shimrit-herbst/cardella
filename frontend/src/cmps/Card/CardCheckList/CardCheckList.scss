@@ -1,13 +1,26 @@
 @import '../../../styles/styles.scss';
 
 .card-checklist {
-    height: 25px;
+    height: rem(25px);
     width: 66.5%;
 
     .checklist-list-container {
         margin-left: rem(-20px);
         margin-bottom: rem(30px);
-        width: 24.5rem;
+        width: 30.5rem;
+
+        .checklist-btn-remove-todo {
+            margin-left: rem(15px);
+            border: none;
+            cursor: pointer;
+            padding-right: rem(1px);
+            background-color: transparent;
+
+            .icon {
+                margin-right: 0;
+                width: rem(30px);
+            }
+        }
 
         .checkbox {
             border-radius: rem(2px);
