@@ -1,3 +1,4 @@
+import React, { useState } from 'react';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import { faTicketAlt, faTimes, faPaperclip } from '@fortawesome/fontawesome-free-solid';
 import { faFileAlt, faTrashAlt } from '@fortawesome/fontawesome-free-regular';
@@ -12,6 +13,9 @@ function CardDetails(props) {
     const cardId = props.match.params.cardId;
     const listTitle = props.getListTitleByListId(listId);
     const card = props.getCardByCardId(listId, cardId);
+
+    const [cardTitle, setCardTitle] = useState(card.title);
+    const [cardDescription, setCardDescription] = useState(card.description);
 
     const onCloseCardModal = (ev) => {
         ev.stopPropagation();
@@ -30,6 +34,40 @@ function CardDetails(props) {
         });
     }
 
+    const onChangeHandler = ({ target }) => {
+        const field = target.name;
+        const value = target.value;
+        if (field === 'title') setCardTitle(value);
+        else if (field === 'description') setCardDescription(value);
+    }
+
+    const handleKeypress = (ev) => {
+        if (ev.key === "Enter") {
+            ev.target.blur();
+        }
+        else if (ev.key === "Escape") {
+            ev.target.value = card.title;
+        }
+    }
+
+    const onUpdateCardTitle = (ev) => {
+        if (card.title === cardTitle) return;
+        if (!cardTitle) {
+            ev.target.value = card.title;
+            return;
+        }
+        props.onUpdateCardTitle(cardTitle, cardId, listId);
+    }
+
+    const onUpdateCardDescription = (ev) => {
+        if (card.description === cardDescription) return;
+        if (!cardDescription) {
+            ev.target.value = card.description;
+            return;
+        }
+        props.onUpdateCardDescription(cardDescription, cardId, listId);
+    }
+
     return (
         <div className="card-details-container flex">
             <div className="main-area">
@@ -37,7 +75,11 @@ function CardDetails(props) {
                     <FontAwesomeIcon icon={faTicketAlt} className="icon fs25" />
                     <input
                         type="text"
-                        value={card.title}
+                        name="title"
+                        value={cardTitle}
+                        onChange={onChangeHandler}
+                        onKeyUp={handleKeypress}
+                        onBlur={onUpdateCardTitle}
                         className="contenteditable-title flex fs23"
                     />
                 </div>
@@ -73,8 +115,11 @@ function CardDetails(props) {
                     </h3>
                     <textarea
                         type="textarea"
+                        name="description"
+                        value={cardDescription}
+                        onChange={onChangeHandler}
+                        onBlur={onUpdateCardDescription}
                         placeholder="Add a more detailed description..."
-                        value={card.description}
                         className="textarea-input"
                         rows="5"
                         max-rows="6"

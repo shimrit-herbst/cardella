@@ -40,7 +40,7 @@ function ListCmp(props) {
         toggleOpenNewCard();
     }
 
-    const onListTitleChange = (ev) => {
+    const onListTitleUpdate = (ev) => {
         if (list.title === listTitle) return;
         if (!listTitle) {
             ev.target.value = list.title;
@@ -65,7 +65,7 @@ function ListCmp(props) {
                     value={listTitle}
                     onChange={onChangeHandler}
                     onKeyUp={handleKeypress}
-                    onBlur={onListTitleChange}
+                    onBlur={onListTitleUpdate}
                     className="list-title flex"
                 />
                 <div className="list-open-menu flex" onClick={toggleOpenListMenu}>
