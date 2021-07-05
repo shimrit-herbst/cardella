@@ -85,6 +85,7 @@ function ListCmp(props) {
                         listId={list.id}
                         onRemoveCard={onRemoveCard}
                         toggleShowCardModal={props.toggleShowCardModal}
+                        onUpdateCardLabels={props.onUpdateCardLabels}
                         key={card.id}
                     />
                 )}
