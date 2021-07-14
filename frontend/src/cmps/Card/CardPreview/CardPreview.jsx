@@ -9,6 +9,10 @@ function CardPreview(props) {
     const card = props.card;
     const history = useHistory();
 
+    const onUpdateCardLabels = (labelIdx) => {
+        props.onUpdateCardLabels(card, props.listId, labelIdx);
+    }
+
     return (
         <Link to={`${history.location.pathname}/list/${props.listId}/card/${card.id}`}>
             <div
@@ -22,6 +26,7 @@ function CardPreview(props) {
                         <CardPreviewLabels
                             className="card-top-labels"
                             labels={card.labels}
+                            onUpdateCardLabels={onUpdateCardLabels}
                         />
                     }
                     <div className="card-title-delete flex">

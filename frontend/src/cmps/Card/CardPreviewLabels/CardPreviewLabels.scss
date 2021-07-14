@@ -31,4 +31,13 @@
     border-radius: rem(8px);
     margin: 0 5px 5px 0;
     padding: 0 8px 0 8px;
+
+    .remove-label {
+        color: white;
+        padding-right: 0;
+
+        .icon {
+            font-size: 13.5px;
+        }
+    }
 }

@@ -11,7 +11,7 @@ import './CardDetails.scss';
 function CardDetails(props) {
     const listId = props.match.params.listId;
     const cardId = props.match.params.cardId;
-    const listTitle = props.getListTitleByListId(listId);
+    const listTitle = props.getListByListId(listId).title;
     const card = props.getCardByCardId(listId, cardId);
 
     const [cardTitle, setCardTitle] = useState(card.title);
@@ -68,6 +68,14 @@ function CardDetails(props) {
         props.onUpdateCardDescription(cardDescription, cardId, listId);
     }
 
+    const onRemoveCardImg = () => {
+        props.onRemoveCardImg(cardId, listId);
+    }
+
+    const onUpdateCardLabels = (labelIdx) => {
+        props.onUpdateCardLabels(card, listId, labelIdx);
+    }
+
     return (
         <div className="card-details-container flex">
             <div className="main-area">
@@ -88,9 +96,10 @@ function CardDetails(props) {
                     <h5>{listTitle}</h5>
                 </div>
                 <div className="card-details-labels">
-                    {card.labels &&
+                    {(card.labels && card.labels.length > 0) &&
                         <CardPreviewLabels
                             labels={card.labels}
+                            onUpdateCardLabels={onUpdateCardLabels}
                         />
                     }
                 </div>
@@ -144,7 +153,7 @@ function CardDetails(props) {
                                     alt=""
                                 />
                             }
-                            <h5><FontAwesomeIcon icon={faTrashAlt} className="icon fs25" /></h5>
+                            <h5 onClick={onRemoveCardImg}><FontAwesomeIcon icon={faTrashAlt} className="icon fs25" /></h5>
                         </div>
                     </div>
                 }

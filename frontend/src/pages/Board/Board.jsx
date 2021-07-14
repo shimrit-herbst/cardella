@@ -75,6 +75,16 @@ class _Board extends Component {
     this.props.updateCurrBoard({ board });
   }
 
+  onUpdateCardLabels = (card, listId, labelIdx) => {
+    const board = this.getCurrBoardCopy();
+    const listIdx = this.getListIdxById(listId);
+    const cards = board.lists[listIdx].cards;
+    const cardIdx = board.lists[listIdx].cards.findIndex(currCard => currCard.id === card.id);
+    const labels = cards[cardIdx].labels;
+    labels.splice(labelIdx, 1);
+    this.props.updateCurrBoard({ board });
+  }
+
   onRemoveCard = (cardId, listId) => {
     const board = this.getCurrBoardCopy();
     const listIdx = this.getListIdxById(listId);
@@ -126,11 +136,11 @@ class _Board extends Component {
       ({ ...prevState, showCardModal: !prevState.showCardModal }));
   }
 
-  getListTitleByListId = (listId) => {
+  getListByListId = (listId) => {
     const { currBoard } = this.props;
     const listIdx = this.getListIdxById(listId);
     const list = currBoard.lists[listIdx];
-    return list.title;
+    return list;
   }
 
   getCardByCardId = (listId, cardId) => {
@@ -139,6 +149,14 @@ class _Board extends Component {
     const cardIdx = this.getCardIdxById(listId, cardId);
     const card = currBoard.lists[listIdx].cards[cardIdx];
     return card;
+  }
+
+  onRemoveCardImg = (cardId, listId) => {
+    const board = this.getCurrBoardCopy();
+    const listIdx = this.getListIdxById(listId);
+    const cardIdx = this.getCardIdxById(listId, cardId);
+    board.lists[listIdx].cards[cardIdx].uploadImgUrl = "";
+    this.props.updateCurrBoard({ board });
   }
 
   render() {
@@ -170,6 +188,7 @@ class _Board extends Component {
               onRemoveCard={this.onRemoveCard}
               onRemoveList={this.onRemoveList}
               toggleShowCardModal={this.toggleShowCardModal}
+              onUpdateCardLabels={this.onUpdateCardLabels}
             />)}
         </div>
         {this.state.showCardModal &&
@@ -180,11 +199,13 @@ class _Board extends Component {
                 render={props => <CardDetails
                   {...props}
                   boardId={currBoard._id}
-                  getListTitleByListId={this.getListTitleByListId}
+                  getListByListId={this.getListByListId}
                   getCardByCardId={this.getCardByCardId}
                   toggleShowCardModal={this.toggleShowCardModal}
                   onUpdateCardTitle={this.onUpdateCardTitle}
                   onUpdateCardDescription={this.onUpdateCardDescription}
+                  onUpdateCardLabels={this.onUpdateCardLabels}
+                  onRemoveCardImg={this.onRemoveCardImg}
                 />}
               />
             </div>
