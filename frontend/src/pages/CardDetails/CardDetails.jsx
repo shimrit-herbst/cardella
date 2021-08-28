@@ -68,6 +68,10 @@ function CardDetails(props) {
         props.onUpdateCardDescription(cardDescription, cardId, listId);
     }
 
+    const onUpdateChecklistTitle = (checklistTitle, checklistId) => {
+        props.onUpdateChecklistTitle(checklistTitle, checklistId, cardId, listId);
+    }
+
     const onRemoveCardImg = () => {
         props.onRemoveCardImg(cardId, listId);
     }
@@ -158,7 +162,10 @@ function CardDetails(props) {
                     </div>
                 }
                 {card.checklists &&
-                    <CheckLists checklists={card.checklists} />
+                    <CheckLists
+                        checklists={card.checklists}
+                        onUpdateChecklistTitle={onUpdateChecklistTitle}
+                    />
                 }
             </div>
 

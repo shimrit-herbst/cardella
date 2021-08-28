@@ -85,6 +85,15 @@ class _Board extends Component {
     this.props.updateCurrBoard({ board });
   }
 
+  onUpdateChecklistTitle = (checklistTitle, checklistId, cardId, listId) => {
+    const board = this.getCurrBoardCopy();
+    const listIdx = this.getListIdxById(listId);
+    const cardIdx = this.getCardIdxById(listId, cardId);
+    const checklistIdx = board.lists[listIdx].cards[cardIdx].checklists.findIndex(currChecklist => currChecklist.id === checklistId);
+    board.lists[listIdx].cards[cardIdx].checklists[checklistIdx].title = checklistTitle;
+    this.props.updateCurrBoard({ board });
+  }
+
   onRemoveCard = (cardId, listId) => {
     const board = this.getCurrBoardCopy();
     const listIdx = this.getListIdxById(listId);
@@ -205,6 +214,7 @@ class _Board extends Component {
                   onUpdateCardTitle={this.onUpdateCardTitle}
                   onUpdateCardDescription={this.onUpdateCardDescription}
                   onUpdateCardLabels={this.onUpdateCardLabels}
+                  onUpdateChecklistTitle={this.onUpdateChecklistTitle}
                   onRemoveCardImg={this.onRemoveCardImg}
                 />}
               />
